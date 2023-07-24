@@ -1,0 +1,37 @@
+{
+    "name": "rmunate/agent-detection",
+    "description": "The Agent Detection library offers a wide variety of methods that allow you to explore and analyze connection agent data in your application.",
+    "keywords": [
+        "laravel",
+        "php",
+        "agent"
+    ],
+    "homepage": "https://github.com/rmunate/PHPInfoServer",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Rmunate\\AgentDetection\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Raul Mauricio Uñate Castro",
+            "email": "raulmauriciounate@gmail.com",
+            "homepage": "https://github.com/rmunate",
+            "role": "owner"
+        }
+    ],
+    "require": {
+        "php": "^7.4|^8.0",
+        "illuminate/support": "^9.0|^10.0"
+    },
+    "require-dev": {},
+    "extra" : {
+        "branch-alias" : {
+            "dev-main": "v1.0.x-dev"
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
