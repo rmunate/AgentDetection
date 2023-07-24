@@ -8,6 +8,7 @@ trait Validate
      * Check if the user agent contains any of the given keywords.
      *
      * @param array $keywords
+     *
      * @return bool
      */
     private function validateKeyword(array $keywords)
@@ -19,5 +20,5 @@ trait Validate
         }
 
         return false;
-    } 
+    }
 }

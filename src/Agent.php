@@ -2,10 +2,10 @@
 
 namespace Rmunate\AgentDetection;
 
-use Rmunate\AgentDetection\Traits\Server;
 use Rmunate\AgentDetection\Bases\BaseAgent;
-use Rmunate\AgentDetection\Traits\Validate;
 use Rmunate\AgentDetection\Traits\Identifiers;
+use Rmunate\AgentDetection\Traits\Server;
+use Rmunate\AgentDetection\Traits\Validate;
 
 class Agent extends BaseAgent
 {
@@ -168,5 +168,4 @@ class Agent extends BaseAgent
     {
         return self::REMOTE_PORT();
     }
-
 }
