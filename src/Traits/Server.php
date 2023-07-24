@@ -23,7 +23,7 @@ trait Server
     {
         return $_SERVER['REMOTE_ADDR'] ?? null;
     }
-    
+
     /**
      * Get the value of the REMOTE_PORT server variable.
      *

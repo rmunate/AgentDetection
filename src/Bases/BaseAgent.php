@@ -2,8 +2,6 @@
 
 namespace Rmunate\AgentDetection\Bases;
 
-use Rmunate\Server\System;
-
 abstract class BaseAgent
 {
     /**
