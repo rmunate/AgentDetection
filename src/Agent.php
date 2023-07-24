@@ -2,16 +2,22 @@
 
 namespace Rmunate\AgentDetection;
 
-use Rmunate\Server\System;/////////
+use Rmunate\AgentDetection\Traits\Server;
 use Rmunate\AgentDetection\Bases\BaseAgent;
+use Rmunate\AgentDetection\Traits\Validate;
+use Rmunate\AgentDetection\Traits\Identifiers;
 
 class Agent extends BaseAgent
 {
+    use Server;
+    use Validate;
+    use Identifiers;
+
     protected $agent;
 
     public function __construct()
     {
-        $this->agent = System::getServerVariable('HTTP_USER_AGENT');
+        $this->agent = self::HTTP_USER_AGENT();
     }
 
     /**
@@ -21,26 +27,7 @@ class Agent extends BaseAgent
      */
     public function isMobile(): bool
     {
-        $mobileKeywords = [
-            'Mobile',
-            'Android',
-            'iPhone',
-            'iPad',
-            'iPod',
-            'Windows Phone',
-            'BlackBerry',
-            'webOS',
-            'Opera Mini',
-            'IEMobile',
-        ];
-
-        foreach ($mobileKeywords as $keyword) {
-            if (stripos($this->agent, $keyword) !== false) {
-                return true;
-            }
-        }
-
-        return false;
+        return $this->validateKeyword(self::$MOBILES);
     }
 
     /* Retorna TRUE si el usuario se está conectando al sistema desde un escritorio. */
@@ -52,55 +39,55 @@ class Agent extends BaseAgent
     /* Retorna True si es un Iphone */
     public function isIPhone(): bool
     {
-        return $this->containsKeyword(['iPhone', 'iPhone OS']);
+        return $this->validateKeyword(self::$IPHONE);
     }
 
     /* Retorna TRUE si el usuario se está conectando al sistema desde un MAC. */
     public function isMacintosh(): bool
     {
-        return $this->containsKeyword(['Macintosh', 'Intel Mac OS']);
+        return $this->validateKeyword(self::$MAC);
     }
 
     /* Retorna TRUE si el usuario se está conectando al sistema desde un Linux (PC o Sistemas Android). */
     public function isLinux(): bool
     {
-        return $this->containsKeyword(['Linux']);
+        return $this->validateKeyword(self::$LINUX);
     }
 
     /* Retorna TRUE si el usuario se está conectando al sistema desde un Android. */
     public function isAndroid(): bool
     {
-        return $this->containsKeyword(['Android']);
+        return $this->validateKeyword(self::$ANDROID);
     }
 
     /* Retorna TRUE si el usuario se está conectando al sistema desde un Windows. */
     public function isWindows(): bool
     {
-        return $this->containsKeyword(['Windows']);
+        return $this->validateKeyword(self::$WINDOWS);
     }
 
     /* Retorna TRUE si el usuario se está conectando al sistema desde un Windows Phone. */
     public function isWindowsPhone(): bool
     {
-        return $this->containsKeyword(['Windows Phone']);
+        return $this->validateKeyword(self::$WINDOWS_PHONE);
     }
 
     /* Retorna TRUE si el usuario se está conectando al sistema desde un iPod. */
     public function isIpod(): bool
     {
-        return $this->containsKeyword(['iPod']);
+        return $this->validateKeyword(self::$IPOD);
     }
 
     /* Retorna TRUE si el usuario se está conectando al sistema desde un iPad. */
     public function isIpad(): bool
     {
-        return $this->containsKeyword(['iPad']);
+        return $this->validateKeyword(self::$IPAD);
     }
 
     /* Retorna TRUE si el usuario se está conectando al sistema desde un iMac. */
     public function isIMac(): bool
     {
-        return $this->containsKeyword(['iMac']);
+        return $this->validateKeyword(self::$IMAC);
     }
 
     /**
@@ -110,13 +97,7 @@ class Agent extends BaseAgent
      */
     public function clientOS(): string
     {
-        $operatingSystems = [
-            '/\bWindows\b/i'                  => 'Windows',
-            '/\bMacintosh\b|Mac(?!.+OS X)/i'  => 'Mac',
-            '/\bLinux\b/i'                    => 'Linux',
-            '/\bAndroid\b/i'                  => 'Android',
-            '/\biPhone\b|\biPad\b|\biPod\b/i' => 'iOS',
-        ];
+        $operatingSystems = self::$OPERATING_SYSTEM;
 
         foreach ($operatingSystems as $pattern => $os) {
             if (preg_match($pattern, $this->agent)) {
@@ -135,21 +116,8 @@ class Agent extends BaseAgent
     public function browser(): array
     {
         $userAgent = $this->agent;
-        $browsers = [
-            'Internet Explorer' => 'MSIE',
-            'Opera'             => 'Opera',
-            'Netscape'          => 'Netscape',
-            'Apple Safari'      => 'Safari',
-            'Microsoft Edge'    => 'Edg',
-            'Google Chrome'     => 'Chrome',
-            'Mozilla Firefox'   => 'Firefox',
-        ];
-
-        $platforms = [
-            'Linux'     => '/linux/i',
-            'Macintosh' => '/macintosh|mac os x/i',
-            'Windows'   => '/windows|win32/i',
-        ];
+        $browsers = self::$BROWSERS;
+        $platforms = self::$PLATFORMS;
 
         $browserName = 'Unknown';
         $platform = 'Unknown';
@@ -186,28 +154,11 @@ class Agent extends BaseAgent
     }
 
     /**
-     * Check if the user agent contains any of the given keywords.
-     *
-     * @param array $keywords
-     * @return bool
-     */
-    private function containsKeyword(array $keywords): bool
-    {
-        foreach ($keywords as $keyword) {
-            if (stripos($this->agent, $keyword) !== false) {
-                return true;
-            }
-        }
-
-        return false;
-    }
-
-    /**
      * Get the IP address from which the current user is viewing the page.
      */
     public static function remoteAddress()
     {
-        return isset($_SERVER['REMOTE_ADDR']) ? $_SERVER['REMOTE_ADDR'] : null;
+        return self::REMOTE_ADDR();
     }
 
     /**
@@ -215,7 +166,7 @@ class Agent extends BaseAgent
      */
     public static function remotePort()
     {
-        return isset($_SERVER['REMOTE_PORT']) ? $_SERVER['REMOTE_PORT'] : null;
+        return self::REMOTE_PORT();
     }
 
 }
