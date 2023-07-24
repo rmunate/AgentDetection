@@ -134,7 +134,7 @@ class Agent extends BaseAgent
         // Detect browser and version
         foreach ($browsers as $browserName => $browserCode) {
             if (str_contains($userAgent, $browserCode)) {
-                $pattern = '#(?<browser>'.preg_quote($browserCode).')[/ ]+(?<version>[0-9.|a-zA-Z.]*)#';
+                $pattern = '#(?<browser>' . preg_quote($browserCode) . ')[/ ]+(?<version>[0-9.|a-zA-Z.]*)#';
                 if (preg_match_all($pattern, $userAgent, $matches)) {
                     $i = count($matches['browser']);
                     if ($i > 0) {
@@ -147,9 +147,9 @@ class Agent extends BaseAgent
         }
 
         return [
-            'name'      => $browserName,
-            'version'   => $version,
-            'platform'  => $platform,
+            'name' => $browserName,
+            'version' => $version,
+            'platform' => $platform,
         ];
     }
 

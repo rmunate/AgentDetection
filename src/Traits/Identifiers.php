@@ -67,28 +67,28 @@ trait Identifiers
 
     // Operating system mapping based on regular expressions
     public static $OPERATING_SYSTEM = [
-        '/\bWindows\b/i'                  => 'Windows',
-        '/\bMacintosh\b|Mac(?!.+OS X)/i'  => 'Mac',
-        '/\bLinux\b/i'                    => 'Linux',
-        '/\bAndroid\b/i'                  => 'Android',
+        '/\bWindows\b/i' => 'Windows',
+        '/\bMacintosh\b|Mac(?!.+OS X)/i' => 'Mac',
+        '/\bLinux\b/i' => 'Linux',
+        '/\bAndroid\b/i' => 'Android',
         '/\biPhone\b|\biPad\b|\biPod\b/i' => 'iOS',
     ];
 
     // Browser mapping
     public static $BROWSERS = [
         'Internet Explorer' => 'MSIE',
-        'Opera'             => 'Opera',
-        'Netscape'          => 'Netscape',
-        'Apple Safari'      => 'Safari',
-        'Microsoft Edge'    => 'Edg',
-        'Google Chrome'     => 'Chrome',
-        'Mozilla Firefox'   => 'Firefox',
+        'Opera' => 'Opera',
+        'Netscape' => 'Netscape',
+        'Apple Safari' => 'Safari',
+        'Microsoft Edge' => 'Edg',
+        'Google Chrome' => 'Chrome',
+        'Mozilla Firefox' => 'Firefox',
     ];
 
     // Platform mapping based on regular expressions
     public static $PLATFORMS = [
-        'Linux'     => '/linux/i',
+        'Linux' => '/linux/i',
         'Macintosh' => '/macintosh|mac os x/i',
-        'Windows'   => '/windows|win32/i',
+        'Windows' => '/windows|win32/i',
     ];
 }
