@@ -6,7 +6,7 @@
         "php",
         "agent"
     ],
-    "homepage": "https://github.com/rmunate/PHPInfoServer",
+    "homepage": "https://github.com/rmunate/AgentDetection",
     "type": "library",
     "license": "MIT",
     "autoload": {
