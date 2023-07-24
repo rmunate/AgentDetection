@@ -1,19 +1,26 @@
 # Agent Detection | Discover and Analyze Connection Agent Information
 
-The `Agent Detection` library offers a wide variety of methods that allow you to explore and analyze connection agent data in your application.
+The `Agent Detection` library offers a wide range of methods that allow you to discover and analyze the connection agent data in your application.
 
 ![LOGO](https://github.com/rmunate/PHPInfoServer/assets/91748598/f1ee8001-aa76-49c3-82ad-49014b28fd61)
 
 ## Table of Contents
-1. [Available Methods](#available-methods)
-2. [Usage](#usage)
-3. [Creator](#creator)
-4. [License](#license)
+1. [Installation](#installation)
+2. [Available Methods](#available-methods)
+3. [Usage](#usage)
+4. [Creator](#creator)
+5. [License](#license)
 
 ## Introduction
-This simple utility library enables you to retrieve specific details about the connection agent, allowing you to enhance the user experience based on connection data. For example, if you detect a mobile connection, you can prompt the user to download the mobile app if your system has one. Additionally, you can provide a more tailored experience for Android users or differentiate options, menus, and other elements for desktop or mobile users.
+This straightforward library allows you to obtain specific details about the connection agent, enabling you to enhance the user experience based on connection data. For example, if you detect that it's a mobile connection, you can prompt the user to download the mobile app if your system has one. Likewise, you can offer a more personalized experience for Android users or differentiate options, menus, and other elements for desktop or mobile device users.
 
-In essence, you have a world of possibilities at your fingertips.
+In summary, you have a multitude of possibilities at your disposal.
+
+## Installation
+You can easily install the library via Composer.
+```shell
+composer require rmunate/agent-detection
+```
 
 ## Available Methods
 
@@ -31,11 +38,11 @@ In essence, you have a world of possibilities at your fingertips.
 | `Agent::detect()->isIpad()` | Returns `true` if the user's agent corresponds to an iPad. |
 | `Agent::detect()->isIMac()` | Returns `true` if the user's agent corresponds to an iMac. |
 | `Agent::detect()->clientOS()` | Returns the name of the current client's operating system. |
-| `Agent::detect()->browser()` | Returns information about the browser used by the client (Name, Version, and Platform). |
-| `Agent::detect()->remoteAddress()` | Returns the IP address in use in the connection to the system. |
+| `Agent::detect()->browser()` | Returns information about the client's browser (Name, Version, and Platform). |
+| `Agent::detect()->remoteAddress()` | Returns the IP in use in the connection to the system. |
 | `Agent::detect()->remotePort()` | Returns the port in use in the connection to the system. |
 
-With this powerful tool, you can gather connection data in your application and offer different experiences based on the user's system, browser, or device when connecting.
+With this powerful tool, you can obtain connection data in your application and offer different experiences depending on the system, browser, or device the user is using to connect.
 
 ## Usage
 
@@ -50,7 +57,7 @@ if (Agent::detect()->isMobile()) {
 }
 ```
 
-Need to know the browser details?
+Need to know the browser data?
 ```php
 use Rmunate\Server\Agent;
 

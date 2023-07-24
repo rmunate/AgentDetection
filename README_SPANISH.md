@@ -1,14 +1,17 @@
-# Detección de Agente | Descubre y Analiza la Información del Agente de Conexión
-
-La librería `Detección de Agente` ofrece una amplia variedad de métodos que te permitirán conocer y analizar los datos del agente de conexión en tu aplicación.
-
-![LOGO](https://github.com/rmunate/PHPInfoServer/assets/91748598/f1ee8001-aa76-49c3-82ad-49014b28fd61)
+Mis disculpas por el error. Aquí está la tabla de contenido actualizada, incluyendo la sección de instalación:
 
 ## Tabla de Contenido
-1. [Métodos Disponibles](#métodos-disponibles)
-2. [Uso](#uso)
-3. [Creador](#creador)
-4. [Licencia](#licencia)
+1. [Instalación](#instalación)
+2. [Métodos Disponibles](#métodos-disponibles)
+3. [Uso](#uso)
+4. [Creador](#creador)
+5. [Licencia](#licencia)
+
+## Instalación
+Para instalar la librería, puedes hacerlo fácilmente a través de Composer.
+```shell
+composer require rmunate/agent-detection
+```
 
 ## Introducción
 Esta sencilla librería te permite obtener detalles específicos del agente de conexión, lo que te permitirá mejorar la experiencia del usuario en función de los datos de la conexión. Por ejemplo, si detectas que es una conexión móvil, puedes invitar al usuario a descargar la aplicación móvil si tu sistema cuenta con ella. Asimismo, puedes ofrecer una experiencia más personalizada para los usuarios de Android o diferenciar opciones, menús y otros elementos para usuarios de escritorio o dispositivos móviles.
