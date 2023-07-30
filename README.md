@@ -2,6 +2,12 @@
 
 The `Agent Detection` library offers a wide range of methods that allow you to discover and analyze the connection agent data in your application.
 
+⚙️ This library is compatible with Laravel versions 8.0 and above ⚙️
+
+[![Laravel 8.0+](https://img.shields.io/badge/Laravel-8.0%2B-orange.svg)](https://laravel.com)
+[![Laravel 9.0+](https://img.shields.io/badge/Laravel-9.0%2B-orange.svg)](https://laravel.com)
+[![Laravel 10.0+](https://img.shields.io/badge/Laravel-10.0%2B-orange.svg)](https://laravel.com)
+
 ![LOGO](https://github.com/rmunate/PHPInfoServer/assets/91748598/f1ee8001-aa76-49c3-82ad-49014b28fd61)
 
 ## Table of Contents
@@ -32,6 +38,7 @@ composer require rmunate/agent-detection
 | `Agent::detect()->isIPhone()` | Returns `true` if the user's agent corresponds to an iPhone. |
 | `Agent::detect()->isMacintosh()` | Returns `true` if the user's agent corresponds to a Macintosh operating system. |
 | `Agent::detect()->isLinux()` | Returns `true` if the user's agent corresponds to a Linux operating system (PC or Android systems). |
+| `Agent::detect()->isAndroid()` | Returns `true` if the user's agent corresponds to a Android operating system. |
 | `Agent::detect()->isWindows()` | Returns `true` if the user's agent corresponds to a Windows operating system. |
 | `Agent::detect()->isWindowsPhone()` | Returns `true` if the user's agent corresponds to a Windows Phone operating system. |
 | `Agent::detect()->isIpod()` | Returns `true` if the user's agent corresponds to an iPod. |

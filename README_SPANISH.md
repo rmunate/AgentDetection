@@ -1,4 +1,12 @@
-Mis disculpas por el error. Aquí está la tabla de contenido actualizada, incluyendo la sección de instalación:
+# Agent Detection | Descubrimiento y Análisis de Información del Agente de Conexión
+
+La biblioteca `Agent Detection` ofrece una amplia gama de métodos que te permiten descubrir y analizar la información del agente de conexión en tu aplicación.
+
+⚙️ Esta librería es compatible con versiones de Laravel 8.0 y superiores ⚙️
+
+[![Laravel 8.0+](https://img.shields.io/badge/Laravel-8.0%2B-orange.svg)](https://laravel.com)
+[![Laravel 9.0+](https://img.shields.io/badge/Laravel-9.0%2B-orange.svg)](https://laravel.com)
+[![Laravel 10.0+](https://img.shields.io/badge/Laravel-10.0%2B-orange.svg)](https://laravel.com)
 
 ## Tabla de Contenido
 1. [Instalación](#instalación)
@@ -28,6 +36,7 @@ En resumen, tienes un sinfín de posibilidades a tu disposición.
 | `Agent::detect()->isIPhone()` | Retorna `true` si el agente del usuario corresponde a un iPhone. |
 | `Agent::detect()->isMacintosh()` | Retorna `true` si el agente del usuario corresponde a un sistema operativo Macintosh. |
 | `Agent::detect()->isLinux()` | Retorna `true` si el agente del usuario corresponde a un sistema operativo Linux (PC o sistemas Android). |
+| `Agent::detect()->isAndroid()` | Retorna `true` si el agente del usuario corresponde a un sistema Android. |
 | `Agent::detect()->isWindows()` | Retorna `true` si el agente del usuario corresponde a un sistema operativo Windows. |
 | `Agent::detect()->isWindowsPhone()` | Retorna `true` si el agente del usuario corresponde a un sistema operativo Windows Phone. |
 | `Agent::detect()->isIpod()` | Retorna `true` si el agente del usuario corresponde a un iPod. |
