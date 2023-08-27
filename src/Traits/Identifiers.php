@@ -28,6 +28,7 @@ trait Identifiers
     public static $MAC = [
         'Macintosh',
         'Intel Mac OS',
+        'Intel Mac',
     ];
 
     // Linux user agent identifiers
