@@ -81,4 +81,10 @@ $browser = Agent::detect()->browser();
 - Email: raulmauriciounate@gmail.com
 
 ## License
-[![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](https://choosealicense.com/licenses/mit/)
+This project is under the [MIT License](https://choosealicense.com/licenses/mit/).
+
+🌟 Support My Projects! 🚀
+
+Make any contributions you see fit; the code is entirely yours. Together, we can do amazing things and improve the world of development. Your support is invaluable. 💖✨
+
+If you have ideas, suggestions, or just want to collaborate, we are open to everything! Join our community and be part of our journey to success! 🌐👩‍💻👨‍💻
