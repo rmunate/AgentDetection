@@ -8,6 +8,10 @@ La biblioteca `Agent Detection` ofrece una amplia gama de métodos que te permit
 [![Laravel 9.0+](https://img.shields.io/badge/Laravel-9.0%2B-orange.svg)](https://laravel.com)
 [![Laravel 10.0+](https://img.shields.io/badge/Laravel-10.0%2B-orange.svg)](https://laravel.com)
 
+![LOGO](https://github.com/rmunate/PHPInfoServer/assets/91748598/f1ee8001-aa76-49c3-82ad-49014b28fd61)
+
+📖 [**DOCUMENTACIÓN EN INGLÉS**](README.md) 📖
+
 ## Tabla de Contenido
 1. [Instalación](#instalación)
 2. [Métodos Disponibles](#métodos-disponibles)

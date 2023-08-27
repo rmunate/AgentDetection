@@ -10,6 +10,8 @@ The `Agent Detection` library offers a wide range of methods that allow you to d
 
 ![LOGO](https://github.com/rmunate/PHPInfoServer/assets/91748598/f1ee8001-aa76-49c3-82ad-49014b28fd61)
 
+📖 [**DOCUMENTACIÓN EN ESPAÑOL**](README_SPANISH.md) 📖
+
 ## Table of Contents
 1. [Installation](#installation)
 2. [Available Methods](#available-methods)
