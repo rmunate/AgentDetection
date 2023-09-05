@@ -40,7 +40,7 @@ class AgentProvider extends ServiceProvider
         Blade::directive('ifAgentIsDesktop', function () {
             return "<?php if (app('\Rmunate\AgentDetection\Agent')->detect()->isDesktop()): ?>";
         });
-        
+
         Blade::directive('endIfAgentIsDesktop', function () {
             return '<?php endif; ?>';
         });
@@ -62,7 +62,7 @@ class AgentProvider extends ServiceProvider
         Blade::directive('ifAgentIsMacintosh', function () {
             return "<?php if (app('\Rmunate\AgentDetection\Agent')->detect()->isMacintosh()): ?>";
         });
-        
+
         Blade::directive('endIfAgentIsMacintosh', function () {
             return '<?php endif; ?>';
         });
@@ -106,7 +106,7 @@ class AgentProvider extends ServiceProvider
         Blade::directive('ifAgentIsWindowsPhone', function () {
             return "<?php if (app('\Rmunate\AgentDetection\Agent')->detect()->isWindowsPhone()): ?>";
         });
-        
+
         Blade::directive('endIfAgentIsWindowsPhone', function () {
             return '<?php endif; ?>';
         });
@@ -117,7 +117,7 @@ class AgentProvider extends ServiceProvider
         Blade::directive('ifAgentIsIpod', function () {
             return "<?php if (app('\Rmunate\AgentDetection\Agent')->detect()->isIpod()): ?>";
         });
-        
+
         Blade::directive('endIfAgentIsIpod', function () {
             return '<?php endif; ?>';
         });
@@ -128,7 +128,7 @@ class AgentProvider extends ServiceProvider
         Blade::directive('ifAgentIsIpad', function () {
             return "<?php if (app('\Rmunate\AgentDetection\Agent')->detect()->isIpad()): ?>";
         });
-        
+
         Blade::directive('endIfAgentIsIpad', function () {
             return '<?php endif; ?>';
         });
@@ -150,7 +150,7 @@ class AgentProvider extends ServiceProvider
         Blade::directive('ifAgentIsTablet', function () {
             return "<?php if (app('\Rmunate\AgentDetection\Agent')->detect()->isTablet()): ?>";
         });
-        
+
         Blade::directive('endIfAgentIsTablet', function () {
             return '<?php endif; ?>';
         });
@@ -161,7 +161,7 @@ class AgentProvider extends ServiceProvider
         Blade::directive('ifAgentIsCrawler', function () {
             return "<?php if (app('\Rmunate\AgentDetection\Agent')->detect()->isCrawler()): ?>";
         });
-        
+
         Blade::directive('endIfAgentIsCrawler', function () {
             return '<?php endif; ?>';
         });
@@ -172,7 +172,7 @@ class AgentProvider extends ServiceProvider
         Blade::directive('ifAgentIsRobot', function () {
             return "<?php if (app('\Rmunate\AgentDetection\Agent')->detect()->isRobot()): ?>";
         });
-        
+
         Blade::directive('endIfAgentIsRobot', function () {
             return '<?php endif; ?>';
         });
@@ -210,6 +210,5 @@ class AgentProvider extends ServiceProvider
         Blade::directive('endIfAgentRemotePort', function () {
             return '<?php endif; ?>';
         });
-
     }
 }

@@ -4,7 +4,6 @@ namespace Rmunate\AgentDetection\Bases;
 
 abstract class BaseAgent
 {
-
     private static $agent;
 
     /**
@@ -41,11 +40,13 @@ abstract class BaseAgent
      * Set a custom user agent string.
      *
      * @param string $string The custom user agent string.
+     *
      * @return \Rmunate\Server\Agent An instance of the Agent class.
      */
     public static function set($string)
     {
         self::$agent = $string;
+
         return new static($string);
     }
 }
