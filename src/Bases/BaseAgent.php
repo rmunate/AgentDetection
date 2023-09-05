@@ -31,7 +31,7 @@ abstract class BaseAgent
      */
     public static function get()
     {
-        return $_SERVER['HTTP_USER_AGENT'] ?? null;
+        return $this->agent ?? $_SERVER['HTTP_USER_AGENT'];
     }
 
     /**

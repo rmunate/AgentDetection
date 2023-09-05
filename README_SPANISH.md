@@ -52,9 +52,12 @@ Esta validacion es posible realizarla desde los controladores o directamente des
 ```php
 use Rmunate\AgentDetection\Agent;
 
+//Detectando el Agente Actual
 if (Agent::detect()->isMobile()) {
     # Es Conexión Movil...
 } 
+
+//Asignandole un agente
 ```
 
 Directiva Blade
