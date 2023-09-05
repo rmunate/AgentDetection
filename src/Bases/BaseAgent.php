@@ -4,6 +4,9 @@ namespace Rmunate\AgentDetection\Bases;
 
 abstract class BaseAgent
 {
+
+    private static $agent;
+
     /**
      * Detect the user agent and return an instance of the Agent class.
      *
@@ -31,7 +34,7 @@ abstract class BaseAgent
      */
     public static function get()
     {
-        return $this->agent ?? $_SERVER['HTTP_USER_AGENT'];
+        return self::$agent ?? $_SERVER['HTTP_USER_AGENT'];
     }
 
     /**
@@ -42,6 +45,7 @@ abstract class BaseAgent
      */
     public static function set($string)
     {
+
         return new static($string);
     }
 }
