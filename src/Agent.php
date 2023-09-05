@@ -2,11 +2,11 @@
 
 namespace Rmunate\AgentDetection;
 
-use Rmunate\AgentDetection\Traits\Server;
 use Rmunate\AgentDetection\Bases\BaseAgent;
+use Rmunate\AgentDetection\Traits\Identifiers;
+use Rmunate\AgentDetection\Traits\Server;
 use Rmunate\AgentDetection\Traits\Validate;
 use Rmunate\AgentDetection\Traits\Wrappers;
-use Rmunate\AgentDetection\Traits\Identifiers;
 
 class Agent extends BaseAgent
 {
@@ -39,7 +39,7 @@ class Agent extends BaseAgent
         // Validate the user agent against a list of known mobile keywords.
         return $this->validateKeyword(self::$MOBILES);
     }
-    
+
     /**
      * Check if the user agent corresponds to a desktop device.
      *
@@ -50,7 +50,7 @@ class Agent extends BaseAgent
         // Invert the result of the isMobile() method to check for desktop devices.
         return !$this->isMobile();
     }
-    
+
     /**
      * Check if the user agent corresponds to an iPhone device.
      *
@@ -72,7 +72,7 @@ class Agent extends BaseAgent
         // Validate the user agent against a list of known Macintosh keywords.
         return $this->validateKeyword(self::$MAC);
     }
-    
+
     /**
      * Check if the user agent corresponds to a Linux-based device.
      *
@@ -83,7 +83,7 @@ class Agent extends BaseAgent
         // Validate the user agent against a list of known Linux keywords.
         return $this->validateKeyword(self::$LINUX);
     }
-    
+
     /**
      * Check if the user agent corresponds to an Android device.
      *
@@ -94,7 +94,7 @@ class Agent extends BaseAgent
         // Validate the user agent against a list of known Android keywords.
         return $this->validateKeyword(self::$ANDROID);
     }
-    
+
     /**
      * Check if the user agent corresponds to a Windows-based device.
      *
@@ -105,7 +105,7 @@ class Agent extends BaseAgent
         // Validate the user agent against a list of known Windows keywords.
         return $this->validateKeyword(self::$WINDOWS);
     }
-    
+
     /**
      * Check if the user agent corresponds to a Windows Phone device.
      *
@@ -116,7 +116,7 @@ class Agent extends BaseAgent
         // Validate the user agent against a list of known Windows Phone keywords.
         return $this->validateKeyword(self::$WINDOWS_PHONE);
     }
-    
+
     /**
      * Check if the user agent corresponds to an iPod device.
      *
@@ -127,7 +127,7 @@ class Agent extends BaseAgent
         // Validate the user agent against a list of known iPod keywords.
         return $this->validateKeyword(self::$IPOD);
     }
-    
+
     /**
      * Check if the user agent corresponds to an iPad device.
      *
@@ -138,7 +138,7 @@ class Agent extends BaseAgent
         // Validate the user agent against a list of known iPad keywords.
         return $this->validateKeyword(self::$IPAD);
     }
-    
+
     /**
      * Check if the user agent corresponds to an iMac device.
      *
@@ -179,6 +179,7 @@ class Agent extends BaseAgent
     {
         $CrawlerDetect = self::crawlerDetect();
         $CrawlerDetect->isCrawler($this->agent);
+
         return $CrawlerDetect->getMatches();
     }
 
@@ -264,9 +265,10 @@ class Agent extends BaseAgent
     {
         // Assign the provided array of headers to the object.
         $this->headers = $array;
+
         return $this;
     }
-    
+
     /**
      * Check if the user agent indicates a tablet device.
      *
@@ -282,6 +284,7 @@ class Agent extends BaseAgent
      * Match the user agent against a regular expression.
      *
      * @param string $regex The regular expression pattern to match against the user agent.
+     *
      * @return bool True if the user agent matches the pattern, false otherwise.
      */
     public function match(string $regex)
@@ -305,5 +308,4 @@ class Agent extends BaseAgent
     {
         return self::REMOTE_PORT();
     }
-
 }
