@@ -13,11 +13,32 @@ La biblioteca `Agent Detection` ofrece una amplia gama de métodos que te permit
 📖 [**DOCUMENTACIÓN EN INGLÉS**](README.md) 📖
 
 ## Tabla de Contenido
+## Tabla de Contenido
 1. [Instalación](#instalación)
-2. [Métodos Disponibles](#métodos-disponibles)
-3. [Uso](#uso)
+2. [Introducción](#introducción)
+3. [Métodos Disponibles](#métodos-disponibles)
+   - [Obtener Agente](#obtener-agente)
+   - [Validar si es una conexión Móvil](#validar-si-es-una-conexión-móvil)
+   - [Validar si es una conexión de escritorio](#validar-si-es-una-conexión-de-escritorio)
+   - [Validar si es un iPhone](#validar-si-es-un-iphone)
+   - [Validar si es un Macintosh](#validar-si-es-un-macintosh)
+   - [Validar si es un Linux](#validar-si-es-un-linux)
+   - [Validar si es un Android](#validar-si-es-un-android)
+   - [Validar si es un Windows](#validar-si-es-un-windows)
+   - [Validar si es un Windows Phone](#validar-si-es-un-windows-phone)
+   - [Validar si es un iPod](#validar-si-es-un-ipod)
+   - [Validar si es un iPad](#validar-si-es-un-ipad)
+   - [Validar si es un iMac](#validar-si-es-un-imac)
+   - [Validar si es una Tablet](#validar-si-es-una-tablet)
+   - [Validar si es un Crawler (Robot)](#validar-si-es-un-crawler-robot)
+   - [Validar si el Agente Coincide con una Expresión](#validar-si-el-agente-coincide-con-una-expresión)
+   - [Validar si el Agente se conecta desde una IP o Puerto específico](#validar-si-el-agente-se-conecta-desde-una-ip-o-puerto-específico)
+   - [Obtener el Sistema Operativo del Cliente de Conexión](#obtener-el-sistema-operativo-del-cliente-de-conexión)
+   - [Obtener los Datos del Navegador](#obtener-los-datos-del-navegador)
+   - [Obtener los Datos del Robot](#obtener-los-datos-del-robot)
 4. [Creador](#creador)
 5. [Licencia](#licencia)
+
 
 ## Instalación
 Para instalar la librería, puedes hacerlo fácilmente a través de Composer.
@@ -484,25 +505,12 @@ Para obtener los datos del robot que puede existir dentro del cliente de conexi�
 ```php
 use Rmunate\Server\Agent;
 
-$robotData = Agent::detect()->getIfIsCrawler(); // También puedes usar ->getIfIsRobot()
+//$robotData = $agente = Agent::intersect()->getIfIsCrawler();
+//null
 
-```
+$robotData = $agente = Agent::set('Mozilla/5.0 (compatible; Sosospider/2.0; +http://help.soso.com/webspider.htm)')->getIfIsCrawler();
+// "Sosospider"
 
-
-
-
-| `Agent::detect()->getRobot()` | Retorna el nombre del robot/araña/rastreador encontrado.  |
-
-
-```php
-use Rmunate\Server\Agent;
-
-$browser = Agent::detect()->browser();
-// array:3 [▼
-//   "name" => "Apple Safari"
-//   "version" => "537.36"
-//   "platform" => "Macintosh"
-// ]
 ```
 
 ## Creador
