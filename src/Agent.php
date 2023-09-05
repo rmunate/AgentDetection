@@ -2,16 +2,18 @@
 
 namespace Rmunate\AgentDetection;
 
-use Rmunate\AgentDetection\Bases\BaseAgent;
-use Rmunate\AgentDetection\Traits\Identifiers;
 use Rmunate\AgentDetection\Traits\Server;
+use Rmunate\AgentDetection\Bases\BaseAgent;
 use Rmunate\AgentDetection\Traits\Validate;
+use Rmunate\AgentDetection\Traits\Wrappers;
+use Rmunate\AgentDetection\Traits\Identifiers;
 
 class Agent extends BaseAgent
 {
     use Server;
     use Validate;
     use Identifiers;
+    use Wrappers;
 
     protected $agent;
 
@@ -167,5 +169,42 @@ class Agent extends BaseAgent
     public static function remotePort()
     {
         return self::REMOTE_PORT();
+    }
+
+    /**
+     * Extended function of the library https://github.com/JayBizzle/Crawler-Detect.
+     *
+     * @param  string|null  $agent
+     * @return bool
+     */
+    public static function isCrawler($agent = null)
+    {
+        return (!empty($agent)) ? self::crawlerDetect()->isCrawler($agent) : self::crawlerDetect()->isCrawler();
+    }
+
+    /**
+     * Extended function of the library https://github.com/JayBizzle/Crawler-Detect.
+     *
+     * @param  string|null  $agent
+     * @return bool
+     */
+    public static function isRobot($agent = null)
+    {
+        return (!empty($agent)) ? self::crawlerDetect()->isCrawler($agent) : self::crawlerDetect()->isCrawler();
+    }
+
+    /**
+     * Extended function of the library https://github.com/JayBizzle/Crawler-Detect.
+     *
+     * @param  string|null  $agent
+     * @return bool
+     */
+    public static function getRobot($agent = null)
+    {
+        if (self::isRobot($agent)) {
+            return self::crawlerDetect()->getMatches();
+        }
+
+        return null;
     }
 }
