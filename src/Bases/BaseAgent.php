@@ -45,7 +45,7 @@ abstract class BaseAgent
      */
     public static function set($string)
     {
-
+        self::$agent = $string;
         return new static($string);
     }
 }
