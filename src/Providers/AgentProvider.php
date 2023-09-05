@@ -27,19 +27,19 @@ class AgentProvider extends ServiceProvider
          * It checks if the detected user agent is a mobile device.
          *
          * Usage:
-         * @agentIsMobile
+         * @ifAgentIsMobile
          *   Content for mobile devices
-         * @endAgentIsMobile
+         * @endIfAgentIsMobile
          *
          */
-        Blade::directive('agentIsMobile', function () {
+        Blade::directive('ifAgentIsMobile', function () {
             return "<?php if (app('\Rmunate\AgentDetection\Agent')->detect()->isMobile()): ?>";
         });
 
         /**
          * End of the mobile-specific block.
          */
-        Blade::directive('endAgentIsMobile', function () {
+        Blade::directive('endIfAgentIsMobile', function () {
             return '<?php endif; ?>';
         });
 
@@ -49,17 +49,17 @@ class AgentProvider extends ServiceProvider
          * Usage:
          * @agentIsDesktop
          *   Content for desktop devices
-         * @endAgentIsDesktop
+         * @endIfAgentIsDesktop
          *
          */
-        Blade::directive('agentIsDesktop', function () {
+        Blade::directive('ifAgentIsDesktop', function () {
             return "<?php if (app('\Rmunate\AgentDetection\Agent')->detect()->isDesktop()): ?>";
         });
 
         /**
          * This Blade directive ends the block that is conditionally rendered for desktop devices.
          */
-        Blade::directive('endAgentIsDesktop', function () {
+        Blade::directive('endIfAgentIsDesktop', function () {
             return '<?php endif; ?>';
         });
 
@@ -69,17 +69,17 @@ class AgentProvider extends ServiceProvider
          * Usage:
          * @agentIsIPhone
          *   Content for iPhone devices
-         * @endAgentIsIPhone
+         * @endIfAgentIsIPhone
          *
          */
-        Blade::directive('agentIsIPhone', function () {
+        Blade::directive('ifAgentIsIPhone', function () {
             return "<?php if (app('\Rmunate\AgentDetection\Agent')->detect()->isIPhone()): ?>";
         });
 
         /**
          * This Blade directive ends the block that is conditionally rendered for iPhone devices.
          */
-        Blade::directive('endAgentIsIPhone', function () {
+        Blade::directive('endIfAgentIsIPhone', function () {
             return '<?php endif; ?>';
         });
 
@@ -89,17 +89,17 @@ class AgentProvider extends ServiceProvider
          * Usage:
          * @agentIsMacintosh
          *   Content for Macintosh devices
-         * @endAgentIsMacintosh
+         * @endIfAgentIsMacintosh
          *
          */
-        Blade::directive('agentIsMacintosh', function () {
+        Blade::directive('ifAgentIsMacintosh', function () {
             return "<?php if (app('\Rmunate\AgentDetection\Agent')->detect()->isMacintosh()): ?>";
         });
 
         /**
          * This Blade directive ends the block that is conditionally rendered for Macintosh devices.
          */
-        Blade::directive('endAgentIsMacintosh', function () {
+        Blade::directive('endIfAgentIsMacintosh', function () {
             return '<?php endif; ?>';
         });
 
@@ -109,17 +109,17 @@ class AgentProvider extends ServiceProvider
          * Usage:
          * @agentIsLinux
          *   Content for Linux-based devices
-         * @endAgentIsLinux
+         * @endIfAgentIsLinux
          *
          */
-        Blade::directive('agentIsLinux', function () {
+        Blade::directive('ifAgentIsLinux', function () {
             return "<?php if (app('\Rmunate\AgentDetection\Agent')->detect()->isLinux()): ?>";
         });
 
         /**
          * This Blade directive ends the block that is conditionally rendered for Linux-based devices.
          */
-        Blade::directive('endAgentIsLinux', function () {
+        Blade::directive('endIfAgentIsLinux', function () {
             return '<?php endif; ?>';
         });
 
@@ -129,17 +129,17 @@ class AgentProvider extends ServiceProvider
          * Usage:
          * @agentIsAndroid
          *   Content for Android devices
-         * @endAgentIsAndroid
+         * @endIfAgentIsAndroid
          *
          */
-        Blade::directive('agentIsAndroid', function () {
+        Blade::directive('ifAgentIsAndroid', function () {
             return "<?php if (app('\Rmunate\AgentDetection\Agent')->detect()->isAndroid()): ?>";
         });
 
         /**
          * This Blade directive ends the block that is conditionally rendered for Android devices.
          */
-        Blade::directive('endAgentIsAndroid', function () {
+        Blade::directive('endIfAgentIsAndroid', function () {
             return '<?php endif; ?>';
         });
 
@@ -149,17 +149,17 @@ class AgentProvider extends ServiceProvider
          * Usage:
          * @agentIsWindows
          *   Content for Windows-based devices
-         * @endAgentIsWindows
+         * @endIfAgentIsWindows
          *
          */
-        Blade::directive('agentIsWindows', function () {
+        Blade::directive('ifAgentIsWindows', function () {
             return "<?php if (app('\Rmunate\AgentDetection\Agent')->detect()->isWindows()): ?>";
         });
 
         /**
          * This Blade directive ends the block that is conditionally rendered for Windows-based devices.
          */
-        Blade::directive('endAgentIsWindows', function () {
+        Blade::directive('endIfAgentIsWindows', function () {
             return '<?php endif; ?>';
         });
 
@@ -169,17 +169,17 @@ class AgentProvider extends ServiceProvider
          * Usage:
          * @agentIsWindowsPhone
          *   Content for Windows Phone devices
-         * @endAgentIsWindowsPhone
+         * @endIfAgentIsWindowsPhone
          *
          */
-        Blade::directive('agentIsWindowsPhone', function () {
+        Blade::directive('ifAgentIsWindowsPhone', function () {
             return "<?php if (app('\Rmunate\AgentDetection\Agent')->detect()->isWindowsPhone()): ?>";
         });
 
         /**
          * This Blade directive ends the block that is conditionally rendered for Windows Phone devices.
          */
-        Blade::directive('endAgentIsWindowsPhone', function () {
+        Blade::directive('endIfAgentIsWindowsPhone', function () {
             return '<?php endif; ?>';
         });
 
@@ -189,17 +189,17 @@ class AgentProvider extends ServiceProvider
          * Usage:
          * @agentIsIpod
          *   Content for iPod devices
-         * @endAgentIsIpod
+         * @endIfAgentIsIpod
          *
          */
-        Blade::directive('agentIsIpod', function () {
+        Blade::directive('ifAgentIsIpod', function () {
             return "<?php if (app('\Rmunate\AgentDetection\Agent')->detect()->isIpod()): ?>";
         });
 
         /**
          * This Blade directive ends the block that is conditionally rendered for iPod devices.
          */
-        Blade::directive('endAgentIsIpod', function () {
+        Blade::directive('endIfAgentIsIpod', function () {
             return '<?php endif; ?>';
         });
 
@@ -209,17 +209,17 @@ class AgentProvider extends ServiceProvider
          * Usage:
          * @agentIsIpad
          *   Content for iPad devices
-         * @endAgentIsIpad
+         * @endIfAgentIsIpad
          *
          */
-        Blade::directive('agentIsIpad', function () {
+        Blade::directive('ifAgentIsIpad', function () {
             return "<?php if (app('\Rmunate\AgentDetection\Agent')->detect()->isIpad()): ?>";
         });
 
         /**
          * This Blade directive ends the block that is conditionally rendered for iPad devices.
          */
-        Blade::directive('endAgentIsIpad', function () {
+        Blade::directive('endIfAgentIsIpad', function () {
             return '<?php endif; ?>';
         });
 
@@ -229,17 +229,17 @@ class AgentProvider extends ServiceProvider
          * Usage:
          * @agentIsIMac
          *   Content for iMac devices
-         * @endAgentIsIMac
+         * @endIfAgentIsIMac
          *
          */
-        Blade::directive('agentIsIMac', function () {
+        Blade::directive('ifAgentIsIMac', function () {
             return "<?php if (app('\Rmunate\AgentDetection\Agent')->detect()->isIMac()): ?>";
         });
 
         /**
          * This Blade directive ends the block that is conditionally rendered for iMac devices.
          */
-        Blade::directive('endAgentIsIMac', function () {
+        Blade::directive('endIfAgentIsIMac', function () {
             return '<?php endif; ?>';
         });
 
@@ -249,9 +249,9 @@ class AgentProvider extends ServiceProvider
          * Usage:
          * @agentIp('192.168.1.1')
          *   Content to be displayed if the IP matches
-         * @endAgentIp
+         * @endIfAgentIp
          */
-        Blade::directive('agentRemoteIp', function ($expression) {
+        Blade::directive('ifAgentRemoteIp', function ($expression) {
             return "<?php if ($expression == app('\Rmunate\AgentDetection\Agent')->detect()->remoteAddress()): ?>";
         });
 
@@ -259,7 +259,7 @@ class AgentProvider extends ServiceProvider
          * This Blade directive ends the block that is conditionally rendered for matching IP addresses.
          *
          */
-        Blade::directive('endAgentRemoteIp', function () {
+        Blade::directive('endIfAgentRemoteIp', function () {
             return '<?php endif; ?>';
         });
 
@@ -269,9 +269,9 @@ class AgentProvider extends ServiceProvider
          * Usage:
          * @agentRemotePort('80')
          *   Content to be displayed if the port matches
-         * @endAgentRemotePort
+         * @endIfAgentRemotePort
          */
-        Blade::directive('agentRemotePort', function ($expression) {
+        Blade::directive('ifAgentRemotePort', function ($expression) {
             return "<?php if ($expression == app('\Rmunate\AgentDetection\Agent')->detect()->remotePort()): ?>";
         });
 
@@ -279,7 +279,7 @@ class AgentProvider extends ServiceProvider
          * This Blade directive ends the block that is conditionally rendered for matching port numbers.
          *
          */
-        Blade::directive('endAgentRemotePort', function () {
+        Blade::directive('endIfAgentRemotePort', function () {
             return '<?php endif; ?>';
         });
 
@@ -290,7 +290,7 @@ class AgentProvider extends ServiceProvider
             return "<?php if (app('\Rmunate\AgentDetection\Agent')->detect()->isCrawler()): ?>";
         });
         
-        Blade::directive('endAgentRemotePort', function () {
+        Blade::directive('endIfAgentRemotePort', function () {
             return '<?php endif; ?>';
         });
 

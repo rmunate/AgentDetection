@@ -16,80 +16,186 @@ class Agent extends BaseAgent
     use Wrappers;
 
     protected $agent;
+    protected $headers;
 
-    public function __construct()
+    /**
+     * Constructor for the Agent class.
+     *
+     * @param string|null $agent The user agent string (if provided).
+     */
+    public function __construct($agent = null)
     {
-        $this->agent = self::HTTP_USER_AGENT();
+        // If a user agent string is provided, use it; otherwise, use the default user agent.
+        $this->agent = !empty($agent) ? $agent : self::HTTP_USER_AGENT();
     }
 
     /**
-     * Validate if the agent is from a mobile device.
+     * Check if the user agent corresponds to a mobile device.
      *
-     * @return bool
+     * @return bool True if the user agent indicates a mobile device, false otherwise.
      */
-    public function isMobile(): bool
+    public function isMobile()
     {
+        // Validate the user agent against a list of known mobile keywords.
         return $this->validateKeyword(self::$MOBILES);
     }
-
-    /* Retorna TRUE si el usuario se está conectando al sistema desde un escritorio. */
-    public function isDesktop(): bool
+    
+    /**
+     * Check if the user agent corresponds to a desktop device.
+     *
+     * @return bool True if the user agent indicates a desktop device, false otherwise.
+     */
+    public function isDesktop()
     {
+        // Invert the result of the isMobile() method to check for desktop devices.
         return !$this->isMobile();
     }
-
-    /* Retorna True si es un Iphone */
-    public function isIPhone(): bool
+    
+    /**
+     * Check if the user agent corresponds to an iPhone device.
+     *
+     * @return bool True if the user agent indicates an iPhone device, false otherwise.
+     */
+    public function isIPhone()
     {
+        // Validate the user agent against a list of known iPhone keywords.
         return $this->validateKeyword(self::$IPHONE);
     }
 
-    /* Retorna TRUE si el usuario se está conectando al sistema desde un MAC. */
-    public function isMacintosh(): bool
+    /**
+     * Check if the user agent corresponds to a Macintosh device.
+     *
+     * @return bool True if the user agent indicates a Macintosh device, false otherwise.
+     */
+    public function isMacintosh()
     {
+        // Validate the user agent against a list of known Macintosh keywords.
         return $this->validateKeyword(self::$MAC);
     }
-
-    /* Retorna TRUE si el usuario se está conectando al sistema desde un Linux (PC o Sistemas Android). */
-    public function isLinux(): bool
+    
+    /**
+     * Check if the user agent corresponds to a Linux-based device.
+     *
+     * @return bool True if the user agent indicates a Linux-based device, false otherwise.
+     */
+    public function isLinux()
     {
+        // Validate the user agent against a list of known Linux keywords.
         return $this->validateKeyword(self::$LINUX);
     }
-
-    /* Retorna TRUE si el usuario se está conectando al sistema desde un Android. */
-    public function isAndroid(): bool
+    
+    /**
+     * Check if the user agent corresponds to an Android device.
+     *
+     * @return bool True if the user agent indicates an Android device, false otherwise.
+     */
+    public function isAndroid()
     {
+        // Validate the user agent against a list of known Android keywords.
         return $this->validateKeyword(self::$ANDROID);
     }
-
-    /* Retorna TRUE si el usuario se está conectando al sistema desde un Windows. */
-    public function isWindows(): bool
+    
+    /**
+     * Check if the user agent corresponds to a Windows-based device.
+     *
+     * @return bool True if the user agent indicates a Windows-based device, false otherwise.
+     */
+    public function isWindows()
     {
+        // Validate the user agent against a list of known Windows keywords.
         return $this->validateKeyword(self::$WINDOWS);
     }
-
-    /* Retorna TRUE si el usuario se está conectando al sistema desde un Windows Phone. */
-    public function isWindowsPhone(): bool
+    
+    /**
+     * Check if the user agent corresponds to a Windows Phone device.
+     *
+     * @return bool True if the user agent indicates a Windows Phone device, false otherwise.
+     */
+    public function isWindowsPhone()
     {
+        // Validate the user agent against a list of known Windows Phone keywords.
         return $this->validateKeyword(self::$WINDOWS_PHONE);
     }
-
-    /* Retorna TRUE si el usuario se está conectando al sistema desde un iPod. */
-    public function isIpod(): bool
+    
+    /**
+     * Check if the user agent corresponds to an iPod device.
+     *
+     * @return bool True if the user agent indicates an iPod device, false otherwise.
+     */
+    public function isIpod()
     {
+        // Validate the user agent against a list of known iPod keywords.
         return $this->validateKeyword(self::$IPOD);
     }
-
-    /* Retorna TRUE si el usuario se está conectando al sistema desde un iPad. */
-    public function isIpad(): bool
+    
+    /**
+     * Check if the user agent corresponds to an iPad device.
+     *
+     * @return bool True if the user agent indicates an iPad device, false otherwise.
+     */
+    public function isIpad()
     {
+        // Validate the user agent against a list of known iPad keywords.
         return $this->validateKeyword(self::$IPAD);
     }
-
-    /* Retorna TRUE si el usuario se está conectando al sistema desde un iMac. */
+    
+    /**
+     * Check if the user agent corresponds to an iMac device.
+     *
+     * @return bool True if the user agent indicates an iMac device, false otherwise.
+     */
     public function isIMac(): bool
     {
+        // Validate the user agent against a list of known iMac keywords.
         return $this->validateKeyword(self::$IMAC);
+    }
+
+    /**
+     * Extended function of the library https://github.com/JayBizzle/Crawler-Detect.
+     *
+     * @return bool
+     */
+    public function isCrawler()
+    {
+        return self::crawlerDetect()->isCrawler($this->agent);
+    }
+
+    /**
+     * Extended function of the library https://github.com/JayBizzle/Crawler-Detect.
+     *
+     * @return bool
+     */
+    public function isRobot()
+    {
+        return $this->isCrawler();
+    }
+
+    /**
+     * Extended function of the library https://github.com/JayBizzle/Crawler-Detect.
+     *
+     * @return bool
+     */
+    public function getIfIsCrawler()
+    {
+        if ($this->isCrawler()) {
+            return self::crawlerDetect()->getMatches();
+        }
+
+        return null;
+    }
+
+    /**
+     * Extended function of the library https://github.com/JayBizzle/Crawler-Detect.
+     *
+     * @return bool
+     */
+    public function getIfIsRobot()
+    {
+        if ($this->isCrawler()) {
+            return self::crawlerDetect()->getMatches();
+        }
+
+        return null;
     }
 
     /**
@@ -97,7 +203,7 @@ class Agent extends BaseAgent
      *
      * @return string
      */
-    public function clientOS(): string
+    public function clientOS()
     {
         $operatingSystems = self::$OPERATING_SYSTEM;
 
@@ -115,7 +221,7 @@ class Agent extends BaseAgent
      *
      * @return array
      */
-    public function browser(): array
+    public function browser()
     {
         $userAgent = $this->agent;
         $browsers = self::$BROWSERS;
@@ -156,6 +262,41 @@ class Agent extends BaseAgent
     }
 
     /**
+     * Set the headers of the object with the provided array.
+     *
+     * @param array $array The array containing the headers to set.
+     */
+    public function setHeaders(array $array)
+    {
+        // Assign the provided array of headers to the object.
+        $this->headers = $array;
+        return $this;
+    }
+    
+    /**
+     * Check if the user agent indicates a tablet device.
+     *
+     * @return bool True if the user agent indicates a tablet device, false otherwise.
+     */
+    public function isTablet()
+    {
+        // Use MobileDetect to determine if the user agent indicates a tablet.
+        return self::mobileDetect($this->headers, $this->agent)->isTablet();
+    }
+
+    /**
+     * Match the user agent against a regular expression.
+     *
+     * @param string $regex The regular expression pattern to match against the user agent.
+     * @return bool True if the user agent matches the pattern, false otherwise.
+     */
+    public function match(string $regex)
+    {
+        // Use MobileDetect to match the user agent against the specified regular expression.
+        return self::mobileDetect($this->headers, $this->agent)->match($regex);
+    }
+
+    /**
      * Get the IP address from which the current user is viewing the page.
      */
     public static function remoteAddress()
@@ -171,40 +312,4 @@ class Agent extends BaseAgent
         return self::REMOTE_PORT();
     }
 
-    /**
-     * Extended function of the library https://github.com/JayBizzle/Crawler-Detect.
-     *
-     * @param  string|null  $agent
-     * @return bool
-     */
-    public static function isCrawler($agent = null)
-    {
-        return (!empty($agent)) ? self::crawlerDetect()->isCrawler($agent) : self::crawlerDetect()->isCrawler();
-    }
-
-    /**
-     * Extended function of the library https://github.com/JayBizzle/Crawler-Detect.
-     *
-     * @param  string|null  $agent
-     * @return bool
-     */
-    public static function isRobot($agent = null)
-    {
-        return (!empty($agent)) ? self::crawlerDetect()->isCrawler($agent) : self::crawlerDetect()->isCrawler();
-    }
-
-    /**
-     * Extended function of the library https://github.com/JayBizzle/Crawler-Detect.
-     *
-     * @param  string|null  $agent
-     * @return bool
-     */
-    public static function getRobot($agent = null)
-    {
-        if (self::isRobot($agent)) {
-            return self::crawlerDetect()->getMatches();
-        }
-
-        return null;
-    }
 }

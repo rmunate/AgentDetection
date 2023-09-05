@@ -25,12 +25,18 @@
     "require": {
         "php": "^7.4|^8.0",
         "illuminate/support": "^8.0|^9.0|^10.0",
-        "jaybizzle/crawler-detect": "^1.2"
+        "jaybizzle/crawler-detect": "^1.2",
+        "mobiledetect/mobiledetectlib": "^3.74"
     },
     "require-dev": {},
     "extra" : {
         "branch-alias" : {
             "dev-main": "v1.0.x-dev"
+        },
+        "laravel": {
+            "providers": [
+                "Rmunate\\AgentDetection\\Providers\\AgentProvider"
+            ]
         }
     },
     "minimum-stability": "dev",

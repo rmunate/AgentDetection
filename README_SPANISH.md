@@ -28,14 +28,45 @@ composer require rmunate/agent-detection
 ## Introducción
 Esta sencilla librería te permite obtener detalles específicos del agente de conexión, lo que te permitirá mejorar la experiencia del usuario en función de los datos de la conexión. Por ejemplo, si detectas que es una conexión móvil, puedes invitar al usuario a descargar la aplicación móvil si tu sistema cuenta con ella. Asimismo, puedes ofrecer una experiencia más personalizada para los usuarios de Android o diferenciar opciones, menús y otros elementos para usuarios de escritorio o dispositivos móviles.
 
+Esta libreria tambien aprovecha la funcionalidad del paquete https://github.com/JayBizzle/Crawler-Detect, para que puedas determinar si se trata de un bot, rastreador o araña.
+
+
 En resumen, tienes un sinfín de posibilidades a tu disposición.
 
 ## Métodos Disponibles
 Los siguientes metodos podran ser usados desde cualquier clase, controlador, servicio, etc, escrito en PHP.
 
-| Método | Descripción |
-| ------ | ----------- |
-| `Agent::get()` | Retorna el agente de conexión actual, detectado por el servidor. |
+### Obtener Agente
+`Agent::get()` Retorna el agente de conexión actual, detectado por el servidor.
+
+```php
+use Rmunate\AgentDetection\Agent;
+
+Agent::get();
+//"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.0.0 Safari/537.36"
+```
+
+### Validar si es una conexion Movil
+Esta validacion es posible realizarla desde los controladores o directamente desde la vista a traves de la directiva blade suministrada.
+
+```php
+use Rmunate\AgentDetection\Agent;
+
+if (Agent::detect()->isMobile()) {
+    # Es Conexión Movil...
+} 
+```
+
+Directiva Blade
+```php
+@ifAgentIsMobile
+    <h1>Es Conexión Movil</h1>
+@else
+    <h1>No Es Conexión Movil</h1>
+@endIfAgentIsMobile
+```
+
+
 | `Agent::detect()->isMobile()` | Valida si el agente proviene de un dispositivo móvil. |
 | `Agent::detect()->isDesktop()` | Retorna `true` si el usuario está accediendo desde un dispositivo de escritorio. |
 | `Agent::detect()->isIPhone()` | Retorna `true` si el agente del usuario corresponde a un iPhone. |

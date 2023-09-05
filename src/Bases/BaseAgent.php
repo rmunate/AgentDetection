@@ -33,4 +33,15 @@ abstract class BaseAgent
     {
         return $_SERVER['HTTP_USER_AGENT'] ?? null;
     }
+
+    /**
+     * Set a custom user agent string.
+     *
+     * @param string $string The custom user agent string.
+     * @return \Rmunate\Server\Agent An instance of the Agent class.
+     */
+    public static function set($string)
+    {
+        return new static($string);
+    }
 }
