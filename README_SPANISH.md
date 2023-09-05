@@ -26,15 +26,12 @@ composer require rmunate/agent-detection
 ```
 
 ## Introducción
-Esta sencilla librería te permite obtener detalles específicos del agente de conexión, lo que te permitirá mejorar la experiencia del usuario en función de los datos de la conexión. Por ejemplo, si detectas que es una conexión móvil, puedes invitar al usuario a descargar la aplicación móvil si tu sistema cuenta con ella. Asimismo, puedes ofrecer una experiencia más personalizada para los usuarios de Android o diferenciar opciones, menús y otros elementos para usuarios de escritorio o dispositivos móviles.
+Esta sencilla biblioteca te permite obtener detalles específicos sobre el agente de conexión, lo que te permitirá mejorar la experiencia del usuario en función de los datos de la conexión. Por ejemplo, si detectas que se trata de una conexión móvil, puedes invitar al usuario a descargar la aplicación móvil si tu sistema cuenta con ella. Del mismo modo, puedes ofrecer una experiencia más personalizada para los usuarios de Android o IPhone, diferenciar opciones, menús y otros elementos entre usuarios de escritorio y dispositivos móviles.
 
-Esta libreria tambien aprovecha la funcionalidad del paquete https://github.com/JayBizzle/Crawler-Detect, para que puedas determinar si se trata de un bot, rastreador o araña.
-
-
-En resumen, tienes un sinfín de posibilidades a tu disposición.
+Esta biblioteca también aprovecha la funcionalidad del paquete https://github.com/JayBizzle/Crawler-Detect, lo que te permite determinar si se trata de un bot, rastreador o araña. En resumen, tienes un sinfín de posibilidades a tu disposición.
 
 ## Métodos Disponibles
-Los siguientes metodos podran ser usados desde cualquier clase, controlador, servicio, etc, escrito en PHP.
+A continuación, se enumeran los métodos disponibles en la biblioteca. Asegúrate de tener la última versión instalada en tu sistema para poder utilizar cualquiera de los siguientes métodos o directivas disponibles.
 
 ### Obtener Agente
 `Agent::get()` Retorna el agente de conexión actual, detectado por el servidor.
@@ -46,161 +43,457 @@ Agent::get();
 //"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.0.0 Safari/537.36"
 ```
 
-### Validar si es una conexion Movil
-Esta validacion es posible realizarla desde los controladores o directamente desde la vista a traves de la directiva blade suministrada.
+### Validar si es una conexión Móvil
+Puedes realizar esta validación desde los controladores o directamente desde la vista a través de la directiva Blade suministrada.
 
 ```php
 use Rmunate\AgentDetection\Agent;
 
-//Detectando el Agente Actual
+// Detectando el Agente Actual
 if (Agent::detect()->isMobile()) {
-    # Es Conexión Movil...
+    # Es una Conexión Móvil...
 } 
 
-//Asignandole un agente
+// Asignándole un agente personalizado
+if (Agent::set("Mozilla/5.0...")->isMobile()) {
+    # Es una Conexión Móvil...
+} 
 ```
 
-Directiva Blade
+Directiva Blade: Esta directiva valida el agente de conexión en uso y, en función de esto, actúa como una condición.
+
 ```php
 @ifAgentIsMobile
-    <h1>Es Conexión Movil</h1>
+    <h1>Es una Conexión Móvil</h1>
 @else
-    <h1>No Es Conexión Movil</h1>
+    <h1>No es una Conexión Móvil</h1>
 @endIfAgentIsMobile
 ```
 
+### Validar si es una conexión de escritorio
+Puedes realizar esta validación desde los controladores o directamente desde la vista a través de la directiva Blade suministrada.
 
-| `Agent::detect()->isMobile()` | Valida si el agente proviene de un dispositivo móvil. |
-| `Agent::detect()->isDesktop()` | Retorna `true` si el usuario está accediendo desde un dispositivo de escritorio. |
-| `Agent::detect()->isIPhone()` | Retorna `true` si el agente del usuario corresponde a un iPhone. |
-| `Agent::detect()->isMacintosh()` | Retorna `true` si el agente del usuario corresponde a un sistema operativo Macintosh. |
-| `Agent::detect()->isLinux()` | Retorna `true` si el agente del usuario corresponde a un sistema operativo Linux (PC o sistemas Android). |
-| `Agent::detect()->isAndroid()` | Retorna `true` si el agente del usuario corresponde a un sistema Android. |
-| `Agent::detect()->isWindows()` | Retorna `true` si el agente del usuario corresponde a un sistema operativo Windows. |
-| `Agent::detect()->isWindowsPhone()` | Retorna `true` si el agente del usuario corresponde a un sistema operativo Windows Phone. |
-| `Agent::detect()->isIpod()` | Retorna `true` si el agente del usuario corresponde a un iPod. |
-| `Agent::detect()->isIpad()` | Retorna `true` si el agente del usuario corresponde a un iPad. |
-| `Agent::detect()->isIMac()` | Retorna `true` si el agente del usuario corresponde a un iMac. |
-| `Agent::detect()->clientOS()` | Retorna el nombre del sistema operativo del cliente actual. |
-| `Agent::detect()->browser()` | Retorna información sobre el navegador utilizado por el cliente (Nombre, Versión y Plataforma).|
-| `Agent::detect()->remoteAddress()` | Retorna la IP en uso en la conexión al sistema. |
-| `Agent::detect()->remotePort()` | Retorna el puerto en uso en la conexión al sistema. |
-| `Agent::detect()->isCrawler()` | Retorna `true` si es un detecta robots/arañas/rastreadores a través del encabezado user agenty http_from.  |
-| `Agent::detect()->isRobot()` | Retorna `true` si es un detecta robots/arañas/rastreadores a través del encabezado user agenty http_from.  |
-| `Agent::detect()->getRobot()` | Retorna el nombre del robot/araña/rastreador encontrado.  |
+```php
+use Rmunate\AgentDetection\Agent;
 
-## Directivas Blade
-De igual manera si requieres emplear estas validaciones en las plantillas blade, podras usar las siguientes.
+// Detectando el Agente Actual
+if (Agent::detect()->isDesktop()) {
+    # Es una Conexión de Escritorio...
+} 
 
-### Validar si es una conexion movil.
-```
-@agentIsMobile()
-    <h1>Conexion Movil</h1>
-@endAgentIsMobile()
+// Asignándole un agente personalizado
+if (Agent::set("Mozilla/5.0...")->isDesktop()) {
+    # Es una Conexión de Escritorio...
+} 
 ```
 
-### Validar si es una conexion de escritorio.
-```
-@agentIsDesktop()
-    <h1>Conexion Movil</h1>
-@endAgentIsDesktop()
+Directiva Blade: Esta directiva valida el agente de conexión en uso y, en función de esto, actúa como una condición.
+
+```php
+@ifAgentIsDesktop
+    <h1>Es Conexión de Escritorio</h1>
+@else
+    <h1>No es Conexión de Escritorio</h1>
+@endIfAgentIsDesktop
 ```
 
-### Validar si es una conexion es realizada desde un Iphone.
-```
-@agentIsIPhone()
-    <h1>Conexion Movil</h1>
-@endAgentIsIPhone()
+### Validar si es un iPhone
+
+Puedes realizar esta validación desde los controladores o directamente desde la vista a través de la directiva Blade suministrada.
+
+```php
+use Rmunate\AgentDetection\Agent;
+
+// Detectando el Agente Actual
+if (Agent::detect()->isIPhone()) {
+    # Es un iPhone...
+} 
+
+// Asignándole un agente personalizado
+if (Agent::set("Mozilla/5.0...")->isIPhone()) {
+    # Es un iPhone...
+} 
 ```
 
-### Validar si es una conexion desde un Macintosh
-```
-@agentIsMacintosh()
-    <h1>Conexion Movil</h1>
-@endAgentIsMacintosh()
+Directiva Blade: Esta directiva valida el agente de conexión en uso y, en función de esto, actúa como una condición.
+
+```php
+@ifAgentIsIPhone
+    <h1>Es un iPhone</h1>
+@else
+    <h1>No es un iPhone</h1>
+@endIfAgentIsIPhone
 ```
 
-### Validar si la conexion es desde un sistema operativo Linux
-```
-@agentIsLinux()
-    <h1>Conexion Movil</h1>
-@endAgentIsLinux()
+### Validar si es un Macintosh
+Puedes realizar esta validación desde los controladores o directamente desde la vista a través de la directiva Blade suministrada.
+
+```php
+use Rmunate\AgentDetection\Agent;
+
+// Detectando el Agente Actual
+if (Agent::detect()->isMacintosh()) {
+    # Es un Macintosh...
+} 
+
+// Asignándole un agente personalizado
+if (Agent::set("Mozilla/5.0...")->isMacintosh()) {
+    # Es un Macintosh...
+} 
 ```
 
-### Validar si la conexion es desde un sistema operativo Android
-```
-@agentIsAndroid()
-    <h1>Conexion Movil</h1>
-@endAgentIsAndroid()
+Directiva Blade: Esta directiva valida el agente de conexión en uso y, en función de esto, actúa como una condición.
+
+```php
+@ifAgentIsMacintosh
+    <h1>Es un Macintosh</h1>
+@else
+    <h1>No es un Macintosh</h1>
+@endIfAgentIsMacintosh
 ```
 
-### Validar si la conexion es desde un sistema operativo Windows
-```
-@agentIsWindows()
-    <h1>Conexion Movil</h1>
-@endAgentIsWindows()
+### Validar si es un Linux
+Puedes realizar esta validación desde los controladores o directamente desde la vista a través de la directiva Blade suministrada.
+
+```php
+use Rmunate\AgentDetection\Agent;
+
+// Detectando el Agente Actual
+if (Agent::detect()->isLinux()) {
+    # Es un Linux...
+} 
+
+// Asignándole un agente personalizado
+if (Agent::set("Mozilla/5.0...")->isLinux()) {
+    # Es un Linux...
+} 
 ```
 
-### Validar si la conexion es desde un sistema operativo Windows Mobile
-```
-@agentIsWindowsPhone()
-    <h1>Conexion Movil</h1>
-@endAgentIsWindowsPhone()
+Directiva Blade: Esta directiva valida el agente de conexión en uso y, en función de esto, actúa como una condición.
+
+```php
+@ifAgentIsLinux
+    <h1>Es un Linux</h1>
+@else
+    <h1>No es un Linux</h1>
+@endIfAgentIsLinux
 ```
 
-### Validar si la conexion es desde un sistema operativo Ipod
-```
-@agentIsIpod()
-    <h1>Conexion Movil</h1>
-@endAgentIsIpod()
+### Validar si es un Android
+Puedes realizar esta validación desde los controladores o directamente desde la vista a través de la directiva Blade suministrada.
+
+```php
+use Rmunate\AgentDetection\Agent;
+
+// Detectando el Agente Actual
+if (Agent::detect()->isAndroid()) {
+    # Es un Android...
+} 
+
+// Asignándole un agente personalizado
+if (Agent::set("Mozilla/5.0...")->isAndroid()) {
+    # Es un Android...
+} 
 ```
 
-### Validar si la conexion es desde un sistema operativo Ipad
-```
-@agentIsIpad()
-    <h1>Conexion Movil</h1>
-@endAgentIsIpad()
-```
+Directiva Blade: Esta directiva valida el agente de conexión en uso y, en función de esto, actúa como una condición.
 
-### Validar si la conexion es desde un sistema operativo IMac
-```
-@agentIsIMac()
-    <h1>Conexion Movil</h1>
-@endAgentIsIMac()
+```php
+@ifAgentIsAndroid
+    <h1>Es un Android</h1>
+@else
+    <h1>No es un Android</h1>
+@endIfAgentIsAndroid
 ```
 
-### Validar si la conexion es desde una dirección ip especifica
+### Validar si es un Windows
+Puedes realizar esta validación desde los controladores o directamente desde la vista a través de la directiva Blade suministrada.
+
+```php
+use Rmunate\AgentDetection\Agent;
+
+// Detectando el Agente Actual
+if (Agent::detect()->isWindows()) {
+    # Es un Windows...
+} 
+
+// Asignándole un agente personalizado
+if (Agent::set("Mozilla/5.0...")->isWindows()) {
+    # Es un Windows...
+} 
 ```
-@agentRemoteIp("200.12.100.10")
-    <h1>Conexion Movil</h1>
-@endAgentRemoteIp()
+
+Directiva Blade: Esta directiva valida el agente de conexión en uso y, en función de esto, actúa como una condición.
+
+```php
+@ifAgentIsWindows
+    <h1>Es un Windows</h1>
+@else
+    <h1>No es un Windows</h1>
+@endIfAgentIsWindows
 ```
 
-### Validar si la conexion es desde un puerto especifico
+### Validar si es un Windows Phone
+Puedes realizar esta validación desde los controladores o directamente desde la vista a través de la directiva Blade suministrada.
+
+```php
+use Rmunate\AgentDetection\Agent;
+
+// Detectando el Agente Actual
+if (Agent::detect()->isWindowsPhone()) {
+    # Es un Windows Phone...
+} 
+
+// Asignándole un agente personalizado
+if (Agent::set("Mozilla/5.0...")->isWindowsPhone()) {
+    # Es un Windows Phone...
+} 
 ```
-@agentRemotePort("8080")
-    <h1>Conexion Movil</h1>
-@endAgentRemotePort()
+
+Directiva Blade: Esta directiva valida el agente de conexión en uso y, en función de esto, actúa como una condición.
+
+```php
+@ifAgentIsWindowsPhone
+    <h1>Es un Windows Phone</h1>
+@else
+    <h1>No es un Windows Phone</h1>
+@endIfAgentIsWindowsPhone
 ```
 
+### Validar si es un iPod
+Puedes realizar esta validación desde los controladores o directamente desde la vista a través de la directiva Blade suministrada.
 
+```php
+use Rmunate\AgentDetection\Agent;
 
-Con esta potente herramienta, podrás obtener datos de la conexión en tu aplicación y ofrecer diferentes experiencias dependiendo del sistema, navegador o dispositivo que utilice el usuario al conectarse.
+// Detectando el Agente Actual
+if (Agent::detect()->isIpod()) {
+    # Es un iPod...
+} 
 
-## Uso
+// Asignándole un agente personalizado
+if (Agent::set("Mozilla/5.0...")->isIpod()) {
+    # Es un iPod...
+} 
+```
 
-¿Quieres validar si es una conexión móvil?
+Directiva Blade: Esta directiva valida el agente de conexión en uso y, en función de esto, actúa como una condición.
+
+```php
+@ifAgentIsIpod
+    <h1>Es un iPod</h1>
+@else
+    <h1>No es un iPod</h1>
+@endIfAgentIsIpod
+```
+
+### Validar si es un iPad
+Puedes realizar esta validación desde los controladores o directamente desde la vista a través de la directiva Blade suministrada.
+
+```php
+use Rmunate\AgentDetection\Agent;
+
+// Detectando el Agente Actual
+if (Agent::detect()->isIpad()) {
+    # Es un iPad...
+} 
+
+// Asignándole un agente personalizado
+if (Agent::set("Mozilla/5.0...")->isIpad()) {
+    # Es un iPad...
+} 
+```
+Directiva Blade: Esta directiva valida el agente de conexión en uso y, en función de esto, actúa como una condición.
+
+```php
+@ifAgentIsIpad
+    <h1>Es un iPad</h1>
+@else
+    <h1>No es un iPad</h1>
+@endIfAgentIsIpad
+```
+
+### Validar si es un iMac
+Puedes realizar esta validación desde los controladores o directamente desde la vista a través de la directiva Blade suministrada.
+
+```php
+use Rmunate\AgentDetection\Agent;
+
+// Detectando el Agente Actual
+if (Agent::detect()->isIMac()) {
+    # Es un iMac...
+} 
+
+// Asignándole un agente personalizado
+if (Agent::set("Mozilla/5.0...")->isIMac()) {
+    # Es un iMac...
+} 
+```
+
+Directiva Blade: Esta directiva valida el agente de conexión en uso y, en función de esto, actúa como una condición.
+
+```php
+@ifAgentIsIMac
+    <h1>Es un iMac</h1>
+@else
+    <h1>No es un iMac</h1>
+@endIfAgentIsIMac
+```
+
+### Validar si es una Tablet
+Puedes realizar esta validación desde los controladores o directamente desde la vista a través de la directiva Blade suministrada.
+
+```php
+use Rmunate\AgentDetection\Agent;
+
+// Detectando el Agente Actual
+if (Agent::detect()->isTablet()) {
+    # Es una Tablet...
+} 
+
+// Asignándole un agente personalizado
+if (Agent::set("Mozilla/5.0...")->isTablet()) {
+    # Es una Tablet...
+} 
+```
+
+Directiva Blade: Esta directiva valida el agente de conexión en uso y, en función de esto, actúa como una condición.
+
+```php
+@ifAgentIsTablet
+    <h1>Es una Tablet</h1>
+@else
+    <h1>No es una Tablet</h1>
+@endIfAgentIsTablet
+```
+
+### Validar si es un Crawler (Robot)
+Puedes realizar esta validación desde los controladores o directamente desde la vista a través de la directiva Blade suministrada.
+Puedes usar `isCrawler()` ó `isRobot()`
+
+```php
+use Rmunate\AgentDetection\Agent;
+
+// Detectando el Agente Actual
+if (Agent::detect()->isCrawler()) { //Agent::detect()->isRobot()
+    # Es un Crawler (Robot)...
+} 
+
+// Asignándole un agente personalizado
+if (Agent::set("User-Agent del Crawler")->isCrawler()) { //Agent::set("User-Agent del Crawler")->isRobot()
+    # Es un Crawler (Robot)...
+} 
+```
+Directiva Blade: Esta directiva valida el agente de conexión en uso y, en función de esto, actúa como una condición.
+
+```php
+@ifAgentIsCrawler //@ifAgentIsRobot
+    <h1>Es un Crawler (Robot)</h1>
+@else
+    <h1>No es un Crawler (Robot)</h1>
+@endIfAgentIsCrawler //@endIfAgentIsRobot
+```
+
+### Validar si el Agente Coincide con una Expresión
+Puedes realizar esta validación personalizada utilizando el método `match($expresion)` desde los controladores o directamente desde la vista a través de la directiva Blade suministrada.
+
+```php
+use Rmunate\AgentDetection\Agent;
+
+// Detectando el Agente Actual 
+if (Agent::detect()->match('Firefox')) {
+    # El Agente contiene la expresión...
+} 
+
+// Asignándole un agente personalizado
+if (Agent::set("User-Agent personalizado")->match('Firefox')) {
+    # El Agente contiene la expresión...
+} 
+```
+
+Directiva Blade: Esta directiva valida el agente de conexión en uso contiene una expresión personalizada y, en función de esto, actúa como una condición.
+
+```php
+@ifAgentMatch('Firefox')
+    <h1>El Agente contiene la expresión</h1>
+@else
+    <h1>El Agente no contiene la expresión</h1>
+@endIfAgentMatch
+```
+
+### Validar si el Agente se conecta desde una IP o Puerto específico
+Para obtener la dirección IP de origen de la solicitud, puedes utilizar el siguiente código en PHP:
+
+```php
+use Rmunate\AgentDetection\Agent;
+
+$ip = Agent::remoteAddress(); //'127.0.0.1'
+$puerto = Agent::remotePort(); //55660
+```
+
+Directiva Blade: Esta directiva valida si la solicitud proviene de una IP específica.
+
+```php
+@ifAgentRemoteIp('127.0.0.1')
+    <h1>IP Autorizada</h1>
+@else
+    <h1>IP No Autorizada</h1>
+@endIfAgentRemoteIp
+```
+
+Directiva Blade: Esta directiva valida si la solicitud proviene de un puerto específico.
+```php
+@ifAgentRemotePort('55660')
+    <h1>Puerto Autorizado</h1>
+@else
+    <h1>Puerto No Autorizado</h1>
+@endIfAgentRemotePort
+```
+
+### Obtener el Sistema Operativo del Cliente de Conexión
+Para obtener el nombre del sistema operativo del cliente de conexión, puedes utilizar el siguiente método:
+
+```php
+use Rmunate\AgentDetection\Agent;
+
+$so = Agent::detect()->clientOS(); // Mac | Windows...
+// Devolverá el nombre del sistema operativo
+```
+
+### Obtener los Datos del Navegador
+Para obtener los datos del navegador del cliente de conexión, puedes utilizar el siguiente método en PHP:
+
 ```php
 use Rmunate\Server\Agent;
 
-if (Agent::detect()->isMobile()) {
-    // Es conexión móvil
-} else {
-    // Es conexión de escritorio
-}
+$browser = Agent::detect()->browser();
+```
+Este código devolverá un arreglo con información sobre el navegador, que incluye el nombre del navegador, la versión y la plataforma. Por ejemplo:
+
+```php
+array:3 [▼
+   "name" => "Apple Safari"
+   "version" => "537.36"
+   "platform" => "Macintosh"
+]
 ```
 
-¿Necesitas conocer los datos del navegador?
+### Obtener los Datos del Robot
+Para obtener los datos del robot que puede existir dentro del cliente de conexión, puedes utilizar el siguiente método en PHP:
+
+```php
+use Rmunate\Server\Agent;
+
+$robotData = Agent::detect()->getIfIsCrawler(); // También puedes usar ->getIfIsRobot()
+
+```
+
+
+
+
+| `Agent::detect()->getRobot()` | Retorna el nombre del robot/araña/rastreador encontrado.  |
+
+
 ```php
 use Rmunate\Server\Agent;
 
@@ -221,6 +514,6 @@ Este proyecto se encuentra bajo la [Licencia MIT](https://choosealicense.com/lic
 
 🌟 ¡Apoya Mis Proyectos! 🚀
 
-¡Realiza las contribuciones que veas necesarias, el código es totalmente tuyo. Juntos podemos hacer cosas asombrosas y mejorar el mundo del desarrollo. Tu apoyo es invaluable. 💖✨
+¡Realiza las contribuciones que veas necesarias, el código es totalmente tuyo. Juntos podemos hacer cosas asombrosas y mejorar el mundo del desarrollo. Tu apoyo es invaluable. ✨
 
 Si tienes ideas, sugerencias o simplemente deseas colaborar, ¡estamos abiertos a todo! ¡Únete a nuestra comunidad y forma parte de nuestro viaje hacia el éxito! 🌐👩‍💻👨‍💻

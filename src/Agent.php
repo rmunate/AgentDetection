@@ -177,8 +177,8 @@ class Agent extends BaseAgent
      */
     public function getIfIsCrawler()
     {
-        if ($this->isCrawler()) {
-            return self::crawlerDetect()->getMatches();
+        if (self::crawlerDetect(null, $this->agent)->isCrawler()) {
+            return self::crawlerDetect(null, $this->agent)->getMatches();
         }
 
         return null;
@@ -191,11 +191,7 @@ class Agent extends BaseAgent
      */
     public function getIfIsRobot()
     {
-        if ($this->isCrawler()) {
-            return self::crawlerDetect()->getMatches();
-        }
-
-        return null;
+        return $this->getIfIsCrawler();
     }
 
     /**
