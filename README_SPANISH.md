@@ -8,7 +8,7 @@ La biblioteca `Agent Detection` ofrece una amplia gama de métodos que te permit
 [![Laravel 9.0+](https://img.shields.io/badge/Laravel-9.0%2B-orange.svg)](https://laravel.com)
 [![Laravel 10.0+](https://img.shields.io/badge/Laravel-10.0%2B-orange.svg)](https://laravel.com)
 
-![LOGO](src/Resources/Logo.png)
+![LOGO-agent-detection](https://github.com/alejandrodiazpinilla/AgentDetection/assets/51100789/82980ae4-e73d-4900-96f2-b821f54ca1b2)
 
 📖 [**DOCUMENTACIÓN EN INGLÉS**](README.md) 📖
 

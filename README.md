@@ -8,9 +8,9 @@ The `Agent Detection` library offers a wide range of methods that allow you to d
 [![Laravel 9.0+](https://img.shields.io/badge/Laravel-9.0%2B-orange.svg)](https://laravel.com)
 [![Laravel 10.0+](https://img.shields.io/badge/Laravel-10.0%2B-orange.svg)](https://laravel.com)
 
-![Logo](https://github.com/rmunate/AgentDetection/assets/91748598/01176fb6-d542-4c1f-87d7-993f5ea63cf5)
+![Logo-agent-detection](https://github.com/alejandrodiazpinilla/AgentDetection/assets/51100789/b1e3fcf5-0ae1-4685-a301-1ec21173a9d8)
 
-📖 [**SPANISH DOCUMENTATION**](README_SPANISH.md.md) 📖
+📖 [**SPANISH DOCUMENTATION**](README_SPANISH.md) 📖
 
 ## Table of Contents
 1. [Installation](#installation)
