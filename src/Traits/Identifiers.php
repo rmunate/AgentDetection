@@ -83,17 +83,16 @@ trait Identifiers
         'Netscape'          => 'Netscape',
         'Opera Mini'        => 'Opera Mini',
         'Opera'             => 'Opera',
-        'Netscape'          => 'Netscape',
-        'Apple Safari'      => 'Safari',
         'Microsoft Edge'    => 'Edg',
+        'Microsoft Edge'    => 'Edge',
         'Coc Coc'           => 'coc_coc_browser',
         'Vivaldi'           => 'Vivaldi',
         'UCBrowser'         => 'UCBrowser',
-        'Microsoft Edge'    => 'Edge',
         'Google Chrome'     => 'Chrome',
         'Mozilla Firefox'   => 'Firefox',
-        'Safari'            => 'Safari',
         'WeChat'            => 'MicroMessenger',
+        'Safari'            => 'Safari',
+        'Apple Safari'      => 'Safari',
     ];
 
     // Platform mapping based on regular expressions
