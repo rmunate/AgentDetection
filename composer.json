@@ -28,7 +28,10 @@
         "jaybizzle/crawler-detect": "^1.2",
         "mobiledetect/mobiledetectlib": "^3.74"
     },
-    "require-dev": {},
+    "require-dev": {
+        "phpstan/phpstan": "^1.10",
+        "phpunit/phpunit": "^10.4"
+    },
     "extra" : {
         "branch-alias" : {
             "dev-main": "v1.0.x-dev"

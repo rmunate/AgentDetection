@@ -4,27 +4,22 @@ namespace Rmunate\AgentDetection\Bases;
 
 abstract class BaseAgent
 {
-    private static $agent;
-
     /**
-     * Detect the user agent and return an instance of the Agent class.
+     * Handle calls to missing methods on the helper.
      *
-     * @return \Rmunate\Server\Agent An instance of the Agent class.
+     * @param string $method     The name of the method being called.
+     * @param array  $parameters The parameters passed to the method.
+     *
      */
-    public static function detect()
+    public function __call($method, $parameters)
     {
-        return new static();
+        try {
+            return new static($_SERVER['HTTP_USER_AGENT'])->{$method}($parameters);
+        } catch (\Throwable $th) {
+            throw new Exception("El metodo {$method} no existe", 500);
+        }
     }
 
-    /**
-     * Detect the user agent and return an instance of the Agent class.
-     *
-     * @return \Rmunate\Server\Agent An instance of the Agent class.
-     */
-    public static function intersect()
-    {
-        return new static();
-    }
 
     /**
      * Get the raw user agent string from the server.
@@ -45,8 +40,6 @@ abstract class BaseAgent
      */
     public static function set($string)
     {
-        self::$agent = $string;
-
         return new static($string);
     }
 }

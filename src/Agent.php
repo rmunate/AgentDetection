@@ -3,20 +3,9 @@
 namespace Rmunate\AgentDetection;
 
 use Rmunate\AgentDetection\Bases\BaseAgent;
-use Rmunate\AgentDetection\Traits\Identifiers;
-use Rmunate\AgentDetection\Traits\Server;
-use Rmunate\AgentDetection\Traits\Validate;
-use Rmunate\AgentDetection\Traits\Wrappers;
 
 class Agent extends BaseAgent
 {
-    use Server;
-    use Validate;
-    use Identifiers;
-    use Wrappers;
-
-    protected $agent;
-    protected $headers;
 
     /**
      * Constructor for the Agent class.
@@ -25,9 +14,26 @@ class Agent extends BaseAgent
      */
     public function __construct($agent = null)
     {
-        // If a user agent string is provided, use it; otherwise, use the default user agent.
-        $this->agent = !empty($agent) ? $agent : self::HTTP_USER_AGENT();
+        $this->agent = !empty($agent) ? $agent : $_SERVER['HTTP_USER_AGENT'];
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     /**
      * Check if the user agent corresponds to a mobile device.
