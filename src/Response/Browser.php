@@ -26,9 +26,9 @@ class Browser
      */
     public function __construct(array $data)
     {
-        $this->name = $data["name"] ?? null;
-        $this->version = $data["version"] ?? null;
-        $this->platform = $data["platform"] ?? null;
+        $this->name = $data['name'] ?? null;
+        $this->version = $data['version'] ?? null;
+        $this->platform = $data['platform'] ?? null;
     }
 
     /**
