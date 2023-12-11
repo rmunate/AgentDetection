@@ -68,6 +68,39 @@ class AgentProvider extends ServiceProvider
         });
 
         /**
+         * This Blade directive starts a block that will be conditionally rendered if the detected user agent is an iMac device.
+         */
+        Blade::directive('agentIMac', function () {
+            return "<?php if (app('\Rmunate\AgentDetection\Agent')->detect()->isIMac()): ?>";
+        });
+
+        Blade::directive('endAgentIMac', function () {
+            return '<?php endif; ?>';
+        });
+
+        /**
+         * This Blade directive starts a block that will be conditionally rendered if the detected user agent is an iPod device.
+         */
+        Blade::directive('agentIpod', function () {
+            return "<?php if (app('\Rmunate\AgentDetection\Agent')->detect()->isIpod()): ?>";
+        });
+
+        Blade::directive('endAgentIpod', function () {
+            return '<?php endif; ?>';
+        });
+
+        /**
+         * This Blade directive starts a block that will be conditionally rendered if the detected user agent is an iPad device.
+         */
+        Blade::directive('agentIpad', function () {
+            return "<?php if (app('\Rmunate\AgentDetection\Agent')->detect()->isIpad()): ?>";
+        });
+
+        Blade::directive('endAgentIpad', function () {
+            return '<?php endif; ?>';
+        });
+
+        /**
          * This Blade directive starts a block that will be conditionally rendered if the detected user agent is a Linux-based device.
          */
         Blade::directive('agentLinux', function () {
@@ -112,39 +145,6 @@ class AgentProvider extends ServiceProvider
         });
 
         /**
-         * This Blade directive starts a block that will be conditionally rendered if the detected user agent is an iPod device.
-         */
-        Blade::directive('agentIpod', function () {
-            return "<?php if (app('\Rmunate\AgentDetection\Agent')->detect()->isIpod()): ?>";
-        });
-
-        Blade::directive('endAgentIpod', function () {
-            return '<?php endif; ?>';
-        });
-
-        /**
-         * This Blade directive starts a block that will be conditionally rendered if the detected user agent is an iPad device.
-         */
-        Blade::directive('agentIpad', function () {
-            return "<?php if (app('\Rmunate\AgentDetection\Agent')->detect()->isIpad()): ?>";
-        });
-
-        Blade::directive('endAgentIpad', function () {
-            return '<?php endif; ?>';
-        });
-
-        /**
-         * This Blade directive starts a block that will be conditionally rendered if the detected user agent is an iMac device.
-         */
-        Blade::directive('agentIMac', function () {
-            return "<?php if (app('\Rmunate\AgentDetection\Agent')->detect()->isIMac()): ?>";
-        });
-
-        Blade::directive('endAgentIMac', function () {
-            return '<?php endif; ?>';
-        });
-
-        /**
          * This Blade directive starts a block that will be conditionally rendered if the detected user agent is an Tabñet.
          */
         Blade::directive('agentTablet', function () {
@@ -163,17 +163,6 @@ class AgentProvider extends ServiceProvider
         });
 
         Blade::directive('endAgentCrawler', function () {
-            return '<?php endif; ?>';
-        });
-
-        /**
-         * This Blade directive starts a block that will be conditionally rendered if the detected user agent is an Robot1.
-         */
-        Blade::directive('agentRobot', function () {
-            return "<?php if (app('\Rmunate\AgentDetection\Agent')->detect()->isRobot()): ?>";
-        });
-
-        Blade::directive('endAgentRobot', function () {
             return '<?php endif; ?>';
         });
 
