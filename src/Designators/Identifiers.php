@@ -83,37 +83,37 @@ class Identifiers
             'MSIEMobile',
         ],
         'Netscape'          => [
-            'Netscape'
+            'Netscape',
         ],
         'Opera'             => [
             'Opera',
-            'Opera Mini'
+            'Opera Mini',
         ],
         'Microsoft Edge'    => [
             'Edg',
             'Edge',
         ],
         'Coc Coc'           => [
-            'coc_coc_browser'
+            'coc_coc_browser',
         ],
         'Vivaldi'           => [
-            'Vivaldi'
+            'Vivaldi',
         ],
         'UCBrowser'         => [
-            'UCBrowser'
+            'UCBrowser',
         ],
         'Google Chrome'     => [
-            'Chrome'
+            'Chrome',
         ],
         'Mozilla Firefox'   => [
-            'Firefox'
+            'Firefox',
         ],
         'WeChat'            => [
-            'MicroMessenger'
+            'MicroMessenger',
         ],
         'Safari'            => [
             'Safari',
-            'Apple Safari'
+            'Apple Safari',
         ],
     ];
 

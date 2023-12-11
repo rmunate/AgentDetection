@@ -4,9 +4,9 @@ namespace Rmunate\AgentDetection\Server;
 
 use Detection\MobileDetect;
 use Jaybizzle\CrawlerDetect\CrawlerDetect;
-use Rmunate\AgentDetection\Tools\Utilities;
-use Rmunate\AgentDetection\Response\Browser;
 use Rmunate\AgentDetection\Designators\Identifiers;
+use Rmunate\AgentDetection\Response\Browser;
+use Rmunate\AgentDetection\Tools\Utilities;
 
 class UserAgent
 {
@@ -179,7 +179,7 @@ class UserAgent
      */
     public function match(string $regex)
     {
-        return (stripos($this->agent, $regex) !== false);
+        return stripos($this->agent, $regex) !== false;
     }
 
     /**

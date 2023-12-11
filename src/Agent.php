@@ -2,8 +2,8 @@
 
 namespace Rmunate\AgentDetection;
 
-use Rmunate\AgentDetection\Server\UserAgent;
 use Rmunate\AgentDetection\Exceptions\AgentException;
+use Rmunate\AgentDetection\Server\UserAgent;
 
 class Agent
 {
@@ -13,13 +13,15 @@ class Agent
      * @param string $method     The name of the method being called.
      * @param array  $parameters The parameters passed to the method.
      *
-     * @return mixed The result of the called method.
      * @throws AgentException If the method does not exist.
+     *
+     * @return mixed The result of the called method.
      */
     public static function __callStatic($method, $parameters)
     {
         try {
             $userAgent = new UserAgent();
+
             return $userAgent->{$method}(...$parameters);
         } catch (\Throwable $th) {
             throw AgentException::create("The method '{$method}()' does not exist.");
