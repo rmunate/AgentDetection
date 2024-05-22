@@ -9,14 +9,14 @@ export default defineConfig({
     themeConfig: {
         footer: {
             message: 'Released under the MIT License.',
-            copyright: 'Copyright © 2021-2023 Raul Mauricio Uñate'
+            copyright: 'Copyright © 2021-2024 Raul Mauricio Uñate'
         },
         editLink: {
             pattern: 'https://github.com/rmunate/AgentDetection/tree/main/docs/:path'
         },
         logo: '/img/logo.png',
         nav: [
-            {text: 'v1.4.0', link: '/'},
+            {text: 'v1.5.0', link: '/'},
         ],
         sidebar: [
             {
@@ -52,9 +52,9 @@ export default defineConfig({
         }
     },
     head: [
-        ['link', { 
-                rel: 'stylesheet', 
-                href: '/AgentDetection/css/style.css' 
+        ['link', {
+                rel: 'stylesheet',
+                href: '/AgentDetection/css/style.css'
             }
         ],
         ['link', {
@@ -65,7 +65,7 @@ export default defineConfig({
         ],
         ['meta', {
                 property: 'og:image',
-                content: '/AgentDetection/img/logo-github.png' 
+                content: '/AgentDetection/img/logo-github.png'
             }
         ],
         ['meta', {
