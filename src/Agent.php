@@ -5,6 +5,28 @@ namespace Rmunate\AgentDetection;
 use Rmunate\AgentDetection\Exceptions\AgentException;
 use Rmunate\AgentDetection\Server\UserAgent;
 
+/**
+ * @method bool isMobile() Check if the user agent represents a mobile device.
+ * @method bool isDesktop() Check if the user agent represents a desktop device.
+ * @method bool isIPhone() Check if the user agent represents an iPhone.
+ * @method bool isMacintosh() Check if the user agent represents a Macintosh.
+ * @method bool isIMac() Check if the user agent represents an iMac.
+ * @method bool isIpod() Check if the user agent represents an iPod.
+ * @method bool isIpad() Check if the user agent represents an iPad.
+ * @method bool isLinux() Check if the user agent represents a Linux system.
+ * @method bool isAndroid() Check if the user agent represents an Android device.
+ * @method bool isWindows() Check if the user agent represents a Windows system.
+ * @method bool isWindowsPhone() Check if the user agent represents a Windows Phone device.
+ * @method bool isTablet() Check if the user agent represents a tablet device.
+ * @method bool isCrawler() Check if the user agent is identified as a crawler.
+ * @method array getCrawler() Get the matches from the crawler detection.
+ * @method bool match(string $regex) Check if the user agent matches a given regex pattern.
+ * @method string clientOS() Get the client's operating system.
+ * @method string|null remoteAddress() Get the remote IP address.
+ * @method string|null remotePort() Get the remote port.
+ * @method array browser() Get information about the browser.
+ */
+
 class Agent
 {
     /**
