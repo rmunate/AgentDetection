@@ -73,18 +73,18 @@ final class LaravelIntegrationTest extends TestCase
             $request->server->remove('REMOTE_PORT');
 
             return [
-                'agent' => Agent::get(),
+                'agent'   => Agent::get(),
                 'crawler' => Agent::isCrawler(),
-                'ip' => Agent::remoteAddress(),
-                'port' => Agent::remotePort(),
+                'ip'      => Agent::remoteAddress(),
+                'port'    => Agent::remotePort(),
             ];
         });
 
         $this->get('/agent')->assertOk()->assertExactJson([
-            'agent' => null,
+            'agent'   => null,
             'crawler' => false,
-            'ip' => null,
-            'port' => null,
+            'ip'      => null,
+            'port'    => null,
         ]);
     }
 }
