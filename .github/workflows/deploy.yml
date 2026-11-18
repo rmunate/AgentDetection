@@ -18,6 +18,16 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+      - name: Check GitHub Pages publishing source
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          build_type=$(gh api "repos/$GITHUB_REPOSITORY/pages" --jq .build_type)
+          if [ "$build_type" != workflow ]; then
+            echo "::error::Set Settings > Pages > Source to GitHub Actions before deploying the VitePress site."
+            exit 1
+          fi
+
       - name: Checkout
         uses: actions/checkout@v4
 
