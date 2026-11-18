@@ -1,0 +1,40 @@
+name: Package tests
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    name: Laravel ${{ matrix.laravel }} / PHP ${{ matrix.php }}
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - laravel: '12'
+            php: '8.2'
+          - laravel: '13'
+            php: '8.3'
+          - laravel: '13'
+            php: '8.4'
+          - laravel: '13'
+            php: '8.5'
+
+    steps:
+      - uses: actions/checkout@v6
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php }}
+          tools: composer:v2
+          coverage: none
+      - run: composer validate --strict
+      - run: composer update --with "laravel/framework:^${{ matrix.laravel }}.0" --prefer-dist --no-interaction --no-progress
+      - run: composer audit
+      - run: composer test
+      - run: composer analyse

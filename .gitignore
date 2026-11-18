@@ -15,6 +15,7 @@
 .idea
 .vscode
 composer.lock
+/.phpunit.cache/
 
 # Node
 node_modules

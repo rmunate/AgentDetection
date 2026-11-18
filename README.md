@@ -1,20 +1,38 @@
 # Agent Detection
 
-## 🚀 Discovery and Analysis of Connection Agent Information 🚀
-
-This simple library allows you to obtain specific details about the connection agent, which will enable you to enhance the user experience based on connection data. For example, if you detect that it's a mobile connection, you can invite the user to download the mobile application if your system has one. Similarly, you can offer a more personalized experience for Android or iPhone users, differentiate options, menus, and other elements between desktop and mobile device users.
-
-Additionally, this library allows you to determine if it is a bot, crawler, or spider. In essence, you have endless possibilities at your disposal.ss methods! 💻✨
-
-## Documentation
-[![📖📖📖 **FULL DOCUMENTATION** 📖📖📖](https://img.shields.io/badge/FULL%20DOCUMENTATION-Visit%20Here-blue?style=for-the-badge)](https://rmunate.github.io/AgentDetection/)
+Agent Detection 2.0.0 identifies devices, browsers, operating systems, and crawlers from the request's `User-Agent`. Use its PHP API or Blade directives to tailor what your application displays.
 
 ## Installation
-To install the dependency via Composer.
+
+Use PHP 8.3 or later with Laravel 13, or PHP 8.2 or later with Laravel 12. See the [compatibility table](./docs/getting-started/installation.md#requirements) for other versions.
 
 ```shell
-composer require rmunate/agent-detection
+composer require "rmunate/agent-detection:^2.0"
 ```
+
+## Quick start
+
+```php
+use Rmunate\AgentDetection\Agent;
+
+$isMobile = Agent::isMobile();
+$browserName = Agent::browser()->getName();
+```
+
+In a Laravel Blade view:
+
+```blade
+@agentMobile
+    <p>Mobile view</p>
+@endAgentMobile
+```
+
+## Documentation
+
+- [Documentation site](https://rmunate.github.io/AgentDetection/)
+- [Upgrade guide for 1.x users](./docs/getting-started/installation.md#upgrade-guide)
+- [PHP API](./docs/usage/class-methods.md) and [Blade directives](./docs/usage/blade-directives.md)
+- [Release notes](./docs/getting-started/changelog.md)
 
 ## License
 This project is under the [MIT License](https://choosealicense.com/licenses/mit/).

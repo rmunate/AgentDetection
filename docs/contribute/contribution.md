@@ -34,6 +34,18 @@ const members = [
 
 If you want to add support for a new language or want to develop new features, you can submit your requests to the main branch of the repository.
 
+## Running the checks
+
+Use PHP 8.2 or later and an up-to-date Composer 2 for development. To run the suite against Laravel 13, use PHP 8.3 or later:
+
+```shell
+composer update --with "laravel/framework:^13.0"
+composer test
+composer analyse
+```
+
+Use `laravel/framework:^12.0` instead to test Laravel 12.
+
 ## Contributors
 
 To date, the following world-class developers have contributed their knowledge.

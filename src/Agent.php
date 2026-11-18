@@ -3,6 +3,8 @@
 namespace Rmunate\AgentDetection;
 
 use Rmunate\AgentDetection\Exceptions\AgentException;
+use Rmunate\AgentDetection\Response\Browser;
+use Rmunate\AgentDetection\Server\RequestContext;
 use Rmunate\AgentDetection\Server\UserAgent;
 
 /**
@@ -19,12 +21,12 @@ use Rmunate\AgentDetection\Server\UserAgent;
  * @method bool        isWindowsPhone()     Check if the user agent represents a Windows Phone device.
  * @method bool        isTablet()           Check if the user agent represents a tablet device.
  * @method bool        isCrawler()          Check if the user agent is identified as a crawler.
- * @method array       getCrawler()         Get the matches from the crawler detection.
- * @method bool        match(string $regex) Check if the user agent matches a given regex pattern.
+ * @method string|null getCrawler()         Get the matched crawler name, if any.
+ * @method bool        match(string $regex) Check if the user agent contains the given string.
  * @method string      clientOS()           Get the client's operating system.
  * @method string|null remoteAddress()      Get the remote IP address.
  * @method string|null remotePort()         Get the remote port.
- * @method array       browser()            Get information about the browser.
+ * @method Browser     browser()            Get information about the browser.
  */
 class Agent
 {
@@ -40,13 +42,13 @@ class Agent
      */
     public static function __callStatic($method, $parameters)
     {
-        try {
-            $userAgent = new UserAgent();
+        $userAgent = self::detect();
 
-            return $userAgent->{$method}(...$parameters);
-        } catch (\Throwable $th) {
+        if (!is_callable([$userAgent, $method])) {
             throw AgentException::create("The method '{$method}()' does not exist.");
         }
+
+        return $userAgent->{$method}(...$parameters);
     }
 
     /**
@@ -66,7 +68,7 @@ class Agent
      */
     public static function get()
     {
-        return $_SERVER['HTTP_USER_AGENT'] ?? null;
+        return RequestContext::userAgent();
     }
 
     /**

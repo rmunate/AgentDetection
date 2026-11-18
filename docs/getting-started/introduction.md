@@ -4,10 +4,12 @@ editLink: true
 outline: deep
 ---
 
-![logo-spell-number](/img/logo-full-scream.png)
+![Agent Detection](/img/logo-full-scream.png)
 
-## Introduction
+# Introduction
 
-This straightforward library empowers you to extract specific details about the connection agent, enabling you to enhance the user experience based on connection data. For instance, if you identify a mobile connection, you can prompt the user to download the mobile application if your system supports it. Similarly, you can provide a more tailored experience for Android or iPhone users, distinguish options, menus, and other elements between desktop and mobile users.
+Agent Detection uses the `User-Agent` header to identify device types, operating systems, browsers, and crawlers. In Laravel, you can call the [PHP API](../usage/class-methods.md) in application code or use [Blade directives](../usage/blade-directives.md) to render different content.
 
-Additionally, this library allows you to determine if it is a bot, crawler, or spider. In essence, you have endless possibilities at your disposal.ss methods
+The header is supplied by the client and can be missing or inaccurate. Use detection to adapt what users see, not to make authorization decisions.
+
+Start with the [installation guide](./installation.md), or check the [upgrade guide](./installation.md#upgrade-guide) if you already use 1.x.

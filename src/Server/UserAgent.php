@@ -11,7 +11,7 @@ use Rmunate\AgentDetection\Tools\Utilities;
 class UserAgent
 {
     /**
-     * @string Value User Agent
+     * @var string The user agent string.
      */
     protected $agent;
 
@@ -20,9 +20,9 @@ class UserAgent
      *
      * @param string|null $agent The user agent string.
      */
-    public function __construct(string $agent = null)
+    public function __construct(?string $agent = null)
     {
-        $this->agent = !empty($agent) ? $agent : $_SERVER['HTTP_USER_AGENT'];
+        $this->agent = $agent ?? RequestContext::userAgent() ?? '';
     }
 
     /**
@@ -42,7 +42,7 @@ class UserAgent
      */
     public function isDesktop()
     {
-        return !$this->isMobile();
+        return $this->agent !== '' && !$this->isMobile();
     }
 
     /**
@@ -142,7 +142,12 @@ class UserAgent
      */
     public function isTablet()
     {
-        $mobileDetect = new MobileDetect(null, $this->agent);
+        if ($this->agent === '') {
+            return false;
+        }
+
+        $mobileDetect = new MobileDetect(null, ['autoInitOfHttpHeaders' => false]);
+        $mobileDetect->setUserAgent($this->agent);
 
         return $mobileDetect->isTablet();
     }
@@ -154,32 +159,39 @@ class UserAgent
      */
     public function isCrawler()
     {
-        return (new CrawlerDetect())->isCrawler($this->agent);
+        if ($this->agent === '') {
+            return false;
+        }
+
+        return (new CrawlerDetect(['HTTP_USER_AGENT' => $this->agent]))->isCrawler($this->agent);
     }
 
     /**
-     * Get the matches from the crawler detection.
+     * Get the matched crawler name.
      *
-     * @return array An array containing matches from the crawler detection.
+     * @return string|null The matched crawler name, or null if no crawler was detected.
      */
     public function getCrawler()
     {
-        $CrawlerDetect = new CrawlerDetect();
-        $CrawlerDetect->isCrawler($this->agent);
+        if ($this->agent === '') {
+            return null;
+        }
 
-        return $CrawlerDetect->getMatches();
+        $crawler = new CrawlerDetect(['HTTP_USER_AGENT' => $this->agent]);
+
+        return $crawler->isCrawler($this->agent) ? $crawler->getMatches() : null;
     }
 
     /**
-     * Check if the user agent matches a given regex pattern.
+     * Check if the user agent contains a string, ignoring case.
      *
-     * @param string $regex The regex pattern to match.
+     * @param string $regex The substring to match.
      *
-     * @return bool True if the user agent matches the regex pattern, false otherwise.
+     * @return bool True if the user agent contains the substring, false otherwise.
      */
     public function match(string $regex)
     {
-        return stripos($this->agent, $regex) !== false;
+        return $this->agent !== '' && stripos($this->agent, $regex) !== false;
     }
 
     /**
@@ -207,7 +219,7 @@ class UserAgent
      */
     public function remoteAddress()
     {
-        return $_SERVER['REMOTE_ADDR'] ?? null;
+        return RequestContext::server('REMOTE_ADDR');
     }
 
     /**
@@ -217,13 +229,13 @@ class UserAgent
      */
     public function remotePort()
     {
-        return $_SERVER['REMOTE_PORT'] ?? null;
+        return RequestContext::server('REMOTE_PORT');
     }
 
     /**
      * Get information about the browser.
      *
-     * @return array An array containing browser name, version, and platform.
+     * @return Browser The browser name, version, and platform.
      */
     public function browser()
     {

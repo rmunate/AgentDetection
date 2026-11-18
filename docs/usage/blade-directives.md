@@ -6,7 +6,7 @@ outline: deep
 
 # Blade Directives
 
-If you're using the package to conditionally render HTML based on the connection agent, you can do so in a simple and elegant way. Here are all the directives included in the package.
+These directives render HTML based on the current Laravel request. User-agent detection is intended for presentation, not authorization.
 
 ## Is Mobile Connection
 
@@ -140,7 +140,7 @@ If we need to validate if the agent is a crawler, we can do so extremely simply:
 
 ## Validate by Match
 
-If you want to have a dynamic method of validating the agent, you may find it convenient to use the following method supplied by the package:
+This directive checks for a literal substring in the user agent, ignoring case:
 
 ```blade
 @agentMatch('Mac')
@@ -150,7 +150,7 @@ If you want to have a dynamic method of validating the agent, you may find it co
 
 ## Connection IP:
 
-You can also find out through which IP the Agent connected to the application:
+This directive matches the connection peer's IP address (`REMOTE_ADDR`), without interpreting forwarded headers:
 
 ```blade
 @agentRemoteIp('181.10.10.23')
@@ -160,7 +160,7 @@ You can also find out through which IP the Agent connected to the application:
 
 ## Connection Port
 
-It may be useful to know through which port the connection occurred, so here it is:
+This directive matches the connection peer's port (`REMOTE_PORT`), not the application's listening port:
 
 ```blade
 @agentRemotePort('8080')

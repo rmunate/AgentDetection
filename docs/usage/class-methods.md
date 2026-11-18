@@ -6,11 +6,11 @@ outline: deep
 
 # Class Methods
 
-On this page, you will learn about all the methods currently available within the package. You may be interested in adding new features, so we invite you to contribute to this useful solution.
+Import `Rmunate\AgentDetection\Agent` to inspect the current request. Use `Agent::set()` instead when you have a user-agent string you want to analyze separately.
 
 ## Get
 
-This method returns the complete user connection agent based on the information gathered from the PHP global variable $_SERVER.
+This method returns the active Laravel request's `User-Agent` header, or `null` when it is missing. Without a Laravel request, the package reads `$_SERVER['HTTP_USER_AGENT']`.
 
 ```php
 use Rmunate\AgentDetection\Agent;
@@ -30,20 +30,20 @@ Agent::set("Mozilla/5.0...")->isMobile();
 // True Or False
 ```
 
-After the `set` method, you can chain any of the methods available in this guide.
+After the `set` method, you can chain detection methods. An empty string represents a missing user agent; it does not fall back to the current request.
 
-## Detected
+## Detect
 
-This method instructs the class to take the value identified by the server and then chain any other method from this guide.
+This method creates a detector for the current request. You can then chain detection methods.
 
 ```php
 use Rmunate\AgentDetection\Agent;
 
-Agent::detected()->isMobile();
+Agent::detect()->isMobile();
 // True Or False
 ```
 
-Since version 1.4.0, its use is not mandatory; now you can pass the final method directly to the class for querying.
+For a single check, call the detection method directly, for example `Agent::isMobile()`. Use `Agent::detect()` to reuse the detector for multiple checks.
 
 ## Is Mobile Connection
 
@@ -58,7 +58,7 @@ Agent::isMobile();
 
 ## Is Desktop Connection
 
-This method validates if the connection is from a desktop device. You can use it directly on the Agent class.
+This method returns `true` when a non-empty user agent is not classified as mobile. It returns `false` when the user agent is missing.
 
 ```php
 use Rmunate\AgentDetection\Agent;
@@ -193,7 +193,7 @@ Agent::set('Mozilla/5.0 (compatible; Sosospider/2.0; +http://help.soso.com/websp
 
 ## Get Crawler
 
-If, more than validating if it is a crawler, you need to extract it from the agent, you can use the following method:
+Use this method to get the matched crawler name, or `null` if no crawler was detected:
 
 ```php
 use Rmunate\AgentDetection\Agent;
@@ -204,7 +204,7 @@ Agent::set('Mozilla/5.0 (compatible; Sosospider/2.0; +http://help.soso.com/websp
 
 ## Validate by Match
 
-If you want to have a dynamic method of validating the agent, you may find it convenient to use the following method supplied by the package:
+Use this method to check for a literal substring, ignoring case. It does not interpret regular expressions.
 
 ```php
 use Rmunate\AgentDetection\Agent;
@@ -226,7 +226,7 @@ Agent::clientOS();
 
 ## Connection IP
 
-You can also find out through which IP the Agent connected to the application:
+This method returns the connection peer's `REMOTE_ADDR` as a string, or `null` when unavailable. It does not interpret forwarded headers or look up the client IP behind a proxy.
 
 ```php
 use Rmunate\AgentDetection\Agent;
@@ -236,7 +236,7 @@ Agent::remoteAddress();
 
 ## Connection Port
 
-It may be useful to know through which port the connection occurred, so here it is:
+This method returns the connection peer's `REMOTE_PORT` as a string, or `null` when unavailable. It is not the port the application listens on.
 
 ```php
 use Rmunate\AgentDetection\Agent;

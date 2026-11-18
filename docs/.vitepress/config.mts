@@ -2,7 +2,7 @@ import {defineConfig} from 'vitepress'
 
 export default defineConfig({
     title: "Laravel Agent Detection",
-    description: "Discovery and Analysis of Connection Agent Information!.",
+    description: "User-agent detection for Laravel in PHP and Blade.",
     lang: 'en-US',
     lastUpdated: false,
     base: '/AgentDetection',
@@ -16,7 +16,7 @@ export default defineConfig({
         },
         logo: '/img/logo.png',
         nav: [
-            {text: 'v1.6.0', link: '/'},
+            {text: 'v2.0.0', link: '/getting-started/changelog'},
         ],
         sidebar: [
             {

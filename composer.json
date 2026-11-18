@@ -1,12 +1,15 @@
 {
     "name": "rmunate/agent-detection",
-    "description": "The Agent Detection library offers a wide variety of methods that allow you to explore and analyze connection agent data in your application.",
+    "description": "Detect devices, browsers, operating systems, and crawlers from the user agent, with Laravel Blade directives.",
     "keywords": [
         "laravel",
         "php",
         "agent"
     ],
     "homepage": "https://github.com/rmunate/AgentDetection",
+    "support": {
+        "docs": "https://rmunate.github.io/AgentDetection/"
+    },
     "type": "library",
     "license": "MIT",
     "autoload": {
@@ -23,25 +26,25 @@
         }
     ],
     "require": {
-        "php": "^7.4|^8.0",
-        "illuminate/support": "^8.0|^9.0|^10.0|^11.0|^12.0",
+        "php": "^8.0",
+        "illuminate/support": "^8.0|^9.0|^10.0|^11.0|^12.0|^13.0",
         "jaybizzle/crawler-detect": "^1.2",
         "mobiledetect/mobiledetectlib": "^4.8"
     },
     "require-dev": {
-        "phpstan/phpstan": "^1.10",
-        "phpunit/phpunit": "^10.4|^11.0"
+        "orchestra/testbench": "^10.0|^11.0",
+        "phpstan/phpstan": "^2.1",
+        "phpunit/phpunit": "^11.5|^12.5"
     },
-    "extra" : {
-        "branch-alias" : {
-            "dev-main": "v1.0.x-dev"
-        },
+    "scripts": {
+        "test": "@php vendor/bin/phpunit",
+        "analyse": "@php vendor/bin/phpstan analyse --level=5 --no-progress src"
+    },
+    "extra": {
         "laravel": {
             "providers": [
                 "Rmunate\\AgentDetection\\Providers\\AgentProvider"
             ]
         }
-    },
-    "minimum-stability": "dev",
-    "prefer-stable": true
+    }
 }

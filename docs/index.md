@@ -2,18 +2,21 @@
 layout: home
 
 hero:
-  name: Laravel 
-  text: Agent Detection
-  tagline: Discovery and Analysis of Connection Agent Information! 🚀
+  name: Agent Detection
+  text: User-agent detection for Laravel
+  tagline: Identify device types, browsers, operating systems, and crawlers in PHP and Blade.
   image:
     src: /img/logo.png
     alt: AgentDetection
   actions:
     - theme: brand
-      text: Get Started
-      link: /getting-started/introduction
+      text: Install 2.x
+      link: /getting-started/installation
     - theme: alt
-      text: View on GitHub 
+      text: Upgrade from 1.x
+      link: /getting-started/installation#upgrade-guide
+    - theme: alt
+      text: View on GitHub
       link: https://github.com/rmunate/AgentDetection
 
 features:
